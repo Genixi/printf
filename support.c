@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   support.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 21:58:25 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/06 21:58:28 by equiana          ###   ########.fr       */
+/*   Created: 2019/11/06 22:00:11 by equiana           #+#    #+#             */
+/*   Updated: 2019/11/06 22:00:13 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr(char const *s)
+void ft_error(int n)
 {
-    int i;
-    
-    i = 0;
-    if (s == NULL)
-        return ;
-    while (s[i] != '\0')
-    {
-        write(1, &s[i], 1);
-        i++;
-    }
+    if (n == 1)
+        ft_putstr("malloc error\n");
+    exit(0);
 }
+

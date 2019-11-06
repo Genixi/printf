@@ -1,5 +1,14 @@
-#ifndef FT_PRINTF_LIBFT_H
-#define FT_PRINTF_LIBFT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/09 16:03:31 by equiana           #+#    #+#             */
+/*   Updated: 2019/09/15 13:59:58 by equiana          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 
@@ -81,5 +90,3 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #endif
-
-#endif //FT_PRINTF_LIBFT_H
