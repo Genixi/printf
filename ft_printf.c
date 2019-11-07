@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:57:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/07 00:21:02 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/07 20:21:49 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,32 @@ int ft_pars(char *str, va_list ap, t_param *prm)
 
 	if (*str == 'd' || *str == 'i')
 	{
-		prm->spec = 'd';
+//		prm->type = 'd';
 		d = va_arg(ap, int);
 		ft_putnbr(d);
 	}
 	else if (*str == 'u')
 	{
-		prm->spec = 'u';
+//		prm->type = 'u';
 		u = va_arg(ap, unsigned int);
 		ft_putnbr_u(u);
 	}
 	else if (*str == 'f')
 	{
-		prm->spec = 'f';
+//		prm->type = 'f';
 		prm->precision = 10;
 		f = va_arg(ap, double);
 		ft_putnbr_f(f, prm);
 	}
 	else if (*str == 'c')
 	{
-		prm->spec = 'c';
+//		prm->type = 'c';
 		c = (char)va_arg(ap, int);
 		write(1, &c, 1);
 	}
 	else if (*str == 's' || *str == 'S')
 	{
-		prm->spec = 's';
+//		prm->type = 's';
 		s = va_arg(ap, char*);
 		ft_putstr(s);
 	}
@@ -63,7 +63,11 @@ int ft_printf(const char *restrict format, ...)
     int res;
 	t_param prm;
 
-    va_list ap;
+    prm.flag = 'Z';
+	prm.width = -1;
+	prm.precision = -1;
+	prm.mod = 'Z';
+	va_list ap;
     va_start(ap, format);
     res = 0;
     str = (char*)format;
@@ -72,15 +76,18 @@ int ft_printf(const char *restrict format, ...)
         if (*str == '%')
         {
             str++;
-            res = ft_pars(str, ap, &prm);
-        }
+//          res = ft_pars(str, ap, &prm);
+  			res = ft_parse(str, &prm);
+			display_str(&prm);
+			str += res;
+  		}
         else
             write(1, str, 1);
         str++;
     }
-
     va_end(ap);
-    return (res);
+//  display_str(&prm);
+	return (res);
 }
 
 

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   support.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 22:00:11 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/07 20:19:12 by equiana          ###   ########.fr       */
+/*   Created: 2019/07/09 09:00:50 by equiana           #+#    #+#             */
+/*   Updated: 2019/09/10 19:22:27 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
-#include <stdio.h>
-void ft_error(int n)
-{
-    if (n == 1)
-        ft_putstr("malloc error\n");
-    exit(0);
-}
 
-void display_str(t_param *prm)
+size_t	ft_strlen(const char *str)
 {
-	printf("flag: %c ", prm->flag);
-	printf("width: %d ", prm->width);
-	printf("precision: %d ", prm->precision);
-	printf("type: %s", prm->type);	
-}
+	size_t i;
 
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
