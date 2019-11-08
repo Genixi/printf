@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:03:31 by equiana           #+#    #+#             */
-/*   Updated: 2019/09/15 13:59:58 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/08 19:45:45 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *hay, const char *ndl, size_t len);
 char				*ft_strnew(size_t size);
 char				*ft_itoa(int n);
+char				*ft_itoa_base(int value, int base);
 char				**ft_strsplit(char const *s, char c);
 void				*ft_memalloc(size_t size);
 void				*ft_memset(void *b, int c, size_t len);

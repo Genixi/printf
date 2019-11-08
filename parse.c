@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/07 20:21:52 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/08 18:39:11 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int ft_parse(char *str, t_param *prm)
+int ft_prm_parse(char *str, t_param *prm)
 {
 	int i;
 	int j;
 	char *s_width;
 	char *s_prec;
-	char *s_type;
 
 	i = 0;
 /*
@@ -73,18 +72,29 @@ int ft_parse(char *str, t_param *prm)
 		free(s_prec);
 	}
 /*
+** parse modificator
+*/
+	if (str[i] == 'h' || str[i] == 'l' || str[i] == 'L')
+		prm->mod = str[i++];
+/*
 ** parse type
 */
-   j = (int)ft_strlen(str + i);
-   if (!(s_type = (char*)malloc(sizeof(char) * j)))
-	   ft_error(1);
-   j = 0;
-   while (str[i + j])
-   {
-	   s_type[j] = str[i + j];
-	   j++;
-   }
-   s_type[j] = '\0';
-   prm->type = s_type;
-   return (i);
+	if (str[i] == 'c' || str[i] == 's' || str[i] == 'd' || str[i] == 'i' || str[i] == 'f')
+		prm->type = str[i++];
+	else if (str[i] == 'u' || str[i] == 'F' || str[i] == 'e' || str[i] == 'g' || str[i] == 'G')
+		prm->type = str[i++];
+	else if (str[i] == 'o' || str[i] == 'x' || str[i] == 'X' || str[i] == '%')
+		prm->type = str[i++];
+	if (!i)
+		ft_error(2);
+	return (i);
+}
+
+void ft_prm_init(t_param *p)
+{
+	p->flag = 'Z';
+	p->width = -1;
+	p->precision = -1;
+	p->mod = 'Z';
+	p->type = 'Z';
 }

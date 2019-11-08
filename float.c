@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/07 00:21:05 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/08 16:36:36 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ static int    get_base(double n, int *base_size)
     return (base);
 }
 
-void    ft_putnbr_f(double n, t_param *prm)
+void    ft_display_float(va_list ap, t_param *prm)
 {
-    int sign;
+    double n;
+	int sign;
     int base;
 	int base_size;
     int tmp;
     char *res;
     int i;
     
+	n = va_arg(ap, double);
 	i = 0;
 	base_size = 0;
     base = get_base(n, &base_size) / 10;
