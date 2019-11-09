@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:58:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/08 18:58:19 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/09 16:57:27 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,46 @@
 int main() {
 	int res;
 
-	res = ft_printf("test int 1: %d and go ahead\n", 21);
+/*	printf("printf    int 1: %d and go ahead\n", 21);
+	res = ft_printf("ft_printf int 1: %d and go ahead\n", 21);
 	printf("parameters: flag: Z width: -1 precision: -1 modificator: Z type: d\n");
+	
+	printf("printf    int 2: %d and go ahead\n", -21234);
+	res = ft_printf("ft_printf int 2: %d and go ahead\n", -21234);
+	printf("parameters: flag: Z width: -1 precision: -1 modificator: Z type: d\n");
+
+	printf("printf    int 3: %5i and go ahead\n", 21234);
+	res = ft_printf("ft_printf int 3: %5i and go ahead\n", 21234);
+	printf("parameters: flag: Z width: 5 precision: -1 modificator: Z type: i\n");
+	
+*/	printf("printf    int 4: %5.10d and go ahead\n", 21);
+	res = ft_printf("ft_printf int 4: %5.10d and go ahead\n", 21);
+	printf("parameters: flag: Z width: 5 precision: 10 modificator: Z type: d\n");
+	
+	printf("printf    int 5: %5.7i and go ahead\n", -21);
+	res = ft_printf("ft_printf int 5: %5.7i and go ahead\n", -21);
+	printf("parameters: flag: Z width: 5 precision: 7 modificator: Z type: i\n");
+/*	
+	printf("printf    int 6: %3.3d and go ahead\n", -21234);
+	res = ft_printf("ft_printf int 6: %3.3d and go ahead\n", -21234);
+	printf("parameters: flag: Z width: 3 precision: 3 modificator: Z type: d\n");
+	
+	printf("printf    int 7: %3i and go ahead\n", 21234);
+	res = ft_printf("ft_printf int 7: %3i and go ahead\n", 21234);
+	printf("parameters: flag: Z width: 3 precision: -1 modificator: Z type: i\n");
+
+	printf("printf    unsigned int 8: %5u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 8: %5u and go ahead\n", 2147483647);
+	printf("parameters: flag: Z width: 5 precision: -1 modificator: Z type: u\n");
+	
+	printf("printf    unsigned int 9: %15u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 9: %15u and go ahead\n", 2147483647);
+	printf("parameters: flag: Z width: 15 precision: -1 modificator: Z type: u\n");
+	
+	printf("printf    unsigned int 10: %13u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 10: %13u and go ahead\n", 2147483647);
+	printf("parameters: flag: Z width: 13 precision: -1 modificator: Z type: u\n");
+
 	res = ft_printf("test char 1: %c\n", 'A');
 	printf("parameters: flag: Z width: -1 precision: -1 modificator: Z type: c\n");
 	res = ft_printf("test string 1: %s\n", "test");
@@ -80,5 +118,5 @@ int main() {
 	res = ft_printf("test parse 23: %05.1f\n", 2.7182818);
 	printf("parameters: flag: 0 width: 5 precision: 1 modificator: Z type: f\n");
 //	res = ft_printf("test parse 24: %+-5.1f\n", 2.7182818);
-	return 0;
+*/	return 0;
 }
