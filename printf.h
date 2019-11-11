@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/09 16:57:30 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/11 16:56:15 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ void				ft_putnbr_u(unsigned int n, t_param *prm);
 void				ft_putnbr_l(long l);
 void				ft_putnbr_hex(int value);
 void				ft_putnbr_oct(int value);
+void				ft_put_char(char c, t_param *prm);
+void				ft_put_str(char *s, t_param *prm);
 void				char_fill(char *str, int len, char c); 
 void				ft_display_float(va_list ap, t_param *p);
 void				ft_error(int n);
 void				display_str(t_param *p);
+char				*ft_itoa_base_u(unsigned int n, int base);
 
 #endif //FT_PRINTF_PRINTF_H

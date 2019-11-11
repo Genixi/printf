@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/09 15:29:46 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/11 16:56:55 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void ft_display_char(va_list ap)
+void ft_display_char(va_list ap, t_param *prm)
 {
 	char c;
 
 	c = (char)va_arg(ap, int);
-	write(1, &c, 1);
+	ft_put_char(c, prm);
 }
 
-void ft_display_str(va_list ap)
+void ft_display_str(va_list ap, t_param *prm)
 {
-	ft_putstr(va_arg(ap, char*));
+	char *str;
+
+	str = (char*)va_arg(ap, char*);
+	ft_put_str(str, prm);
 }
 
 void ft_display_int(va_list ap, t_param *prm)
@@ -39,7 +42,7 @@ void ft_display_int(va_list ap, t_param *prm)
 		else
 			ft_putnbr_i(va_arg(ap, int), prm);
 	else if (s == 'u')
-		ft_putnbr_u(va_arg(ap, unsigned int), prm);
+		ft_putnbr_u((unsigned int)va_arg(ap, unsigned int), prm);
 	else if (s == 'd' || s == 'i')
 		ft_putnbr_l(va_arg(ap, long int));
 	else if (s == 'x' || s == 'X')
@@ -58,9 +61,9 @@ void ft_display(va_list ap, t_param *prm)
 	else if (s == 'f')
 		ft_display_float(ap, prm);
 	else if (s == 'c')
-		ft_display_char(ap);
+		ft_display_char(ap, prm);
 	else if (s == 's' || s == 'S')
-		ft_display_str(ap);
+		ft_display_str(ap, prm);
 	else if (s == '%')
 		ft_putchar('%');
 }

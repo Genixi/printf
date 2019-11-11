@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:13:07 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/09 13:53:33 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:52:30 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int ft_printf(const char *restrict format, ...)
             write(1, str, 1);
         str++;
     }
-	printf("parameters: ");
-	display_str(&prm);
-	printf("\n");
+//	printf("parameters: ");
+//	display_str(&prm);
+//	printf("\n");
 //	printf(" res: %d\n", res);
     va_end(ap);
 //	free(str);
