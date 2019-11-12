@@ -6,18 +6,19 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:59:01 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/11 15:07:35 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/12 20:27:42 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char		*ft_itoa_base_u(unsigned int value, int base)
+char		*ft_itoa_base_u(unsigned int value, int base, int cap)
 {
 	int				len;
 	unsigned int	nbr;
 	char			*res;
-	char			*base_str = "0123456789ABCDEF";
+	char			*base_str = "0123456789abcdef";
+	char			*base_str_cap = "0123456789ABCDEF";
 
 	if (value == 0)
 		return ("0");
@@ -34,7 +35,10 @@ char		*ft_itoa_base_u(unsigned int value, int base)
 	res[len] = '\0';
 	while (nbr)
 	{
-		res[--len] = base_str[nbr % base];
+		if (cap == 0)
+			res[--len] = base_str[nbr % base];
+		else
+			res[--len] = base_str_cap[nbr % base];
 		nbr /= base;
 	}
 	return (res);

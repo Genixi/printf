@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/11 20:53:55 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/12 16:41:45 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void    ft_putnbr_f(double n, t_param *prm)
 	width = prm->precision;
 	if (!(res = (char*)malloc(sizeof(char) * (base_size + width + sign + 1))))
         ft_error(1);
-    res[base + width + sign] = '\0';
+    char_fill(res, base_size + width + sign + 1, '0');
+	res[base + width + sign] = '\0';
     if (sign)
 		res[i++] = '-';
 	if (base)
@@ -70,14 +71,16 @@ void    ft_putnbr_f(double n, t_param *prm)
 	res[i] = '.';
     i++;
     n = n * 10;
-    while (i < base_size +  width + sign + 1)
+// 	printf("res 0: %s ", res);
+	while (i < base_size +  width + sign + 1)
     {
 		tmp = (int)n;
 		res[i] = (char)(tmp + '0');
 		n = (n - tmp) * 10;	
 		i++;
     }
-/*	if (prm->width > base_size + width + sign)
+//	printf("res 1: %s ", res);
+	if (prm->width > base_size + width + sign)
 	{
 //		printf("case 1\n");
 		if (!(str= (char*)malloc(sizeof(char) * (prm->width + 1))))
@@ -85,24 +88,28 @@ void    ft_putnbr_f(double n, t_param *prm)
 		char_fill(str, prm->width + 1, ' ');
 		i = prm->width - (base_size + width + sign) - 1;
 		j = 0;
-		while (j < base_size + width + sign + 1)
+		while (i + j < prm->width + 1)
 		{
 			str[i + j] = res[j];
 			j++;
 		}
+		str[prm->width] = '\0';
+//		printf(" str: %s\n", str);
 		ft_putstr(str);
-		free(str);
+//		free(str);
 	}
 	else
 		ft_putstr(res);
-	free(res);
-*/	ft_putstr(res);
+//!!!! почему то при очисте памяти происходит некорректный вывод - разобраться!!
+//	free(res);
+//	ft_putstr(res);
 }
 
 void	ft_display_float(va_list ap, t_param *prm)
 {
 	double n;
 
+//	printf(" !!case f!! "); 
 	n = (double)va_arg(ap, double);
 	ft_putnbr_f(n, prm);
 }

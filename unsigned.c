@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 15:15:40 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/11 16:19:57 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/12 20:30:01 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    ft_putnbr_u(unsigned int n, t_param *prm)
 			char_fill(str, width + 1, ' ');
 		else
 			char_fill(str, width + 1, '0');
-		nbr_str = ft_itoa_base_u(n, 10);
+		nbr_str = ft_itoa_base_u(n, 10, 0);
 		//обработать если itoa вернет  NULL
 		i = width - size - 1;
 		j = 0;
@@ -45,7 +45,7 @@ void    ft_putnbr_u(unsigned int n, t_param *prm)
 		}		
 	}
 	else
-		str = ft_itoa_base(n, 10);
+		str = ft_itoa_base_u(n, 10, 0);
 	ft_putstr(str);
 	free(str);
 	free(nbr_str);
