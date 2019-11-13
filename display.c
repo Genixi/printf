@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 21:10:37 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:30:57 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void ft_display_int(va_list ap, t_param *prm)
 	s = prm->type;
 	if (s == 'd' || s == 'i')
 		if (prm->mod == 'l')
-			ft_putnbr_i(va_arg(ap, int), prm);
+			ft_putnbr_li((unsigned long long int)va_arg(ap, unsigned long long int), prm);
+		else if (prm->mod == 'h')
+			ft_putnbr_hi((short int)va_arg(ap, int), prm);
 		else
 			ft_putnbr_i(va_arg(ap, int), prm);
 	else if (s == 'u')
@@ -50,7 +52,7 @@ void ft_display_int(va_list ap, t_param *prm)
 	else if (s == 'o')
 		ft_putnbr_oct((unsigned int)va_arg(ap, unsigned int), prm);
 	else if( s == 'p')
-		ft_putnbr_ptr((unsigned int)va_arg(ap, unsigned int), prm, 0);
+		ft_putnbr_ptr((unsigned long long int)va_arg(ap, unsigned long long int), prm, 0);
 }
 
 void ft_display(va_list ap, t_param *prm)

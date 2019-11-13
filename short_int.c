@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   integer.c                                          :+:      :+:    :+:   */
+/*   short_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 13:32:20 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/13 17:39:56 by equiana          ###   ########.fr       */
+/*   Created: 2019/11/13 16:26:51 by equiana           #+#    #+#             */
+/*   Updated: 2019/11/13 17:39:53 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-int get_num_len(long int n)
-{
-	int size;
-
-	size = 0;
-	if (n < 0)
-	{
-		n = n * -1;
-		size++;
-	}
-	while (n)
-	{
-		if (n /= 10)
-			size++;
-	}
-	return (size);
-}
-
-void char_fill(char *str, int len, char c)
-{
-	int i;
-
-	i = 0;
-	while (i < len)
-		str[i++] = c;
-	str[len-1] = '\0';
-}
-
-void    ft_putnbr_i(int n, t_param *prm)
+void    ft_putnbr_hi(short int n, t_param *prm)
 {
 	int	size;
 	int i;
@@ -73,7 +45,7 @@ void    ft_putnbr_i(int n, t_param *prm)
 		else
 			char_fill(str, width + 1, '0');
 //		printf("str: %s\n", str);
-		nbr_str = (sign == 1) ? ft_itoa_base(-n, 10) : ft_itoa_base(n, 10);
+		nbr_str = (sign == 1) ? ft_itoa_base_hi(-n, 10, 0) : ft_itoa_base_hi(n, 10, 0);
 		if (sign && prm->width < prm->precision)
 			str[0] = '-';
 		else if (sign && prm->width >= prm->precision)
@@ -91,7 +63,7 @@ void    ft_putnbr_i(int n, t_param *prm)
 		//чистить за собой nbr_str, т.к. он не нужен
 	}
 	else
-		str = ft_itoa_base(n, 10);
+		str = ft_itoa_base_hi(n, 10, 0);
 	ft_putstr(str);
 	free(str);
 	free(nbr_str);

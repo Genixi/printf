@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:58:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 21:30:08 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:37:03 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main() {
 	int res;
-/*
+
 	printf("\nnumbers\n");
 	printf("printf    int 1: %d and go ahead\n", 21);
 	res = ft_printf("ft_printf int 1: %d and go ahead\n", 21);
@@ -38,6 +38,9 @@ int main() {
 	printf("printf    int 7: %3i and go ahead\n", 21234);
 	res = ft_printf("ft_printf int 7: %3i and go ahead\n", 21234);
 
+	printf("printf    int 8: %7.3d and go ahead\n", -21234);
+	res = ft_printf("ft_printf int 8: %7.3d and go ahead\n", -21234);
+	
 	printf("printf    unsigned int 8: %5u and go ahead\n", 2147483647);
 	res = ft_printf("ft_printf unsigned int 8: %5u and go ahead\n", 2147483647);
 	
@@ -53,6 +56,28 @@ int main() {
 	printf("printf    unsigned int 12: %3.2u and go ahead\n", -2147483647);
 	res = ft_printf("ft_printf unsigned int 12: %3.2u and go ahead\n", -2147483647);
 
+	printf("printf    long int 13: %3.2li and go ahead\n", 4000000000);
+	res = ft_printf("ft_printf long int 13: %3.2li and go ahead\n", 4000000000);
+
+	printf("printf    long int 14: %13.2ld and go ahead\n", 4300000000);
+	res = ft_printf("ft_printf long int 14: %13.2ld and go ahead\n", 4300000000);	
+
+	printf("printf    long int 15: %3.12li and go ahead\n", 9300000000);
+	res = ft_printf("ft_printf long int 15: %3.12li and go ahead\n", 9300000000);	
+	
+	printf("itoa_li test 1: %s\n", ft_itoa_base_li(9300000000, 10, 0));
+	printf("itoa_li test 2: %s\n", ft_itoa_base_li(4300000000, 10, 0));
+    
+    printf("printf    short int 13: %3.2hi and go ahead\n", (short int)30700);
+    res = ft_printf("ft_printf short int 13: %3.2hi and go ahead\n", 30700);
+    
+    printf("printf    short int 14: %13.2hd and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short int 14: %13.2hd and go ahead\n", -30700);
+    
+    printf("printf    short int 15: %3.12hi and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short int 15: %3.12hi and go ahead\n", -9123);
+    
+/*
     printf("-------------------------------------------------\n");
     printf("octet type\n");
     printf("printf    octet 1: %o and go ahead\n", 21);
@@ -137,9 +162,10 @@ int main() {
 
 	printf("printf    hex 15: %15.5X and go ahead\n", -214748);
 	res = ft_printf("ft_printf hex 15: %15.5X and go ahead\n", -214748);
-*/
+
     int *int_ptr;
 	char *char_ptr;
+	char str_ptr[4] = "test";
 	int i;
 	char c;
 
@@ -148,45 +174,38 @@ int main() {
 	c = 'Z';
 	int_ptr = &i;
 	char_ptr = &c;
-	printf("printf    pointer int 1: %p\n", int_ptr);
-	printf("printf    pointer int 1: %p\n", &i);
-	res = ft_printf("ft_printf pointer int 1: %p\n", int_ptr);
+	printf("printf    pointer int 1: %20p\n", int_ptr);
+	res = ft_printf("ft_printf pointer int 1: %20p\n", int_ptr);
 	
-	printf("printf    pointer char 2: %p\n", char_ptr);
-	printf("printf    pointer char 2: %p\n", &c);
-	res = ft_printf("ft_printf pointer char 2: %p\n", char_ptr);
+	printf("printf    pointer char 2: %20p\n", char_ptr);
+	res = ft_printf("ft_printf pointer char 2: %20p\n", char_ptr);
 
-/*    
+	printf("printf    pointer char 3: %20p\n", str_ptr);
+	res = ft_printf("ft_printf pointer char 3: %20p\n", str_ptr);
+
 	printf("----------------------------------------------------------------\n");
 	printf("\nchar\n");
 	printf("printf    char 1: %10c and go ahead\n", 'A');
    	res = ft_printf("ft_printf char 1: %10c and go ahead\n", 'A');
-	printf("parameters: flag: Z width: 10 precision: -1 modificator: Z type: c\n");
 	
 	printf("printf    char 1: %3c and go ahead\n", 'z');
 	res = ft_printf("ft_printf char 1: %3c and go ahead\n", 'z');
-	printf("parameters: flag: Z width: 3 precision: -1 modificator: Z type: c\n");
 	
 	printf("\nstring\n");
 	printf("printf    string 1: %13.5s and go ahead\n", "Test_strinG");
 	res = ft_printf("ft_printf string 1: %13.5s and go ahead\n", "Test_strinG");
-	printf("parameters: flag: Z width: 13 precision: 5 modificator: Z type: s\n");
 
 	printf("printf    string 2: %5.13s and go ahead\n", "Test strinG");
 	res = ft_printf("ft_printf string 2: %5.13s and go ahead\n", "Test strinG");
-	printf("parameters: flag: Z width: 5 precision: 13 modificator: Z type: s\n");
 
 	printf("printf    string 3: %20.15s and go ahead\n", "Test strinG");
 	res = ft_printf("ft_printf string 3: %20.15s and go ahead\n", "Test strinG");
-	printf("parameters: flag: Z width: 20 precision: 15 modificator: Z type: s\n");
 
 	printf("printf    string 4: %3.5s and go ahead\n", "Test_strinG");
 	res = ft_printf("ft_printf string 4: %3.5s and go ahead\n", "Test_strinG");
-	printf("parameters: flag: Z width: 3 precision: 5 modificator: Z type: s\n");
 
 	printf("printf    string 5: %3.0s and go ahead\n", "Test_strinG");
 	res = ft_printf("ft_printf string 5: %3.0s and go ahead\n", "Test_strinG");
-	printf("parameters: flag: Z width: 3 precision: 0 modificator: Z type: s\n");
 
 //	res = ft_printf("test parse 1: %13s\n", "test");
 

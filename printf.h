@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 21:04:24 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:32:11 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,20 @@ void				ft_prm_init(t_param *p);
 void				ft_putnbr_i(int n, t_param *prm);
 void				ft_putnbr_u(unsigned int n, t_param *prm);
 void				ft_putnbr_l(long l);
+void				ft_putnbr_li(unsigned long long int n, t_param *prm);
+void				ft_putnbr_hi(short int n, t_param *prm);
 void				ft_putnbr_hex(unsigned int value, t_param *prm, int cap);
 void				ft_putnbr_oct(unsigned int value, t_param *prm);
-void				ft_putnbr_ptr(unsigned int value, t_param *prm, int cap);
+void				ft_putnbr_ptr(unsigned long long int value, t_param *prm, int cap);
 void				ft_put_char(char c, t_param *prm);
 void				ft_put_str(char *s, t_param *prm);
 void				char_fill(char *str, int len, char c); 
 void				ft_display_float(va_list ap, t_param *p);
 void				ft_error(int n);
 void				display_str(t_param *p);
+char				*ft_itoa_base_li(unsigned long long int value, int base, int cap);
+char				*ft_itoa_base_ul(unsigned long long int n, int base, int cap);
 char				*ft_itoa_base_u(unsigned int n, int base, int cap);
+char				*ft_itoa_base_hi(short int nbr, int base, int cap);
 
 #endif //FT_PRINTF_PRINTF_H

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:48:26 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 21:30:17 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/13 13:39:44 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #include "printf.h"
 #include <stdlib.h>
 #include <stdio.h>
-void ft_putnbr_ptr(unsigned int n, t_param *prm, int cap)
+
+//!!!!!!!!использовать size_t или long int!!!
+
+void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
 {
     int size;
     int i;
@@ -23,7 +26,7 @@ void ft_putnbr_ptr(unsigned int n, t_param *prm, int cap)
     char* str;
     char* nbr_str;
     
-	nbr_str = ft_itoa_base_u(n, 16, cap);
+	nbr_str = ft_itoa_base_ul(n, 16, cap);
     size = ft_strlen(nbr_str);
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
 	if (width > size)
@@ -47,6 +50,8 @@ void ft_putnbr_ptr(unsigned int n, t_param *prm, int cap)
         //!!!обработать если itoa вернет  NULL
         i = width - size - 1;
 		j = 0;
+		str[width - size - 3] = '0';
+		str[width - size - 2] = 'x';
 		while (i + j < width + 1)
         {
             str[i + j] = nbr_str[j];
@@ -54,7 +59,7 @@ void ft_putnbr_ptr(unsigned int n, t_param *prm, int cap)
         }
     }
     else
-		str = ft_itoa_base_u(n, 16, cap);
+		str = ft_itoa_base_ul(n, 16, cap);
     ft_putstr(str);
 //!!!почему то не фришиться сразу 2 указателя - разобраться!!
 	free(str);
