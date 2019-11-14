@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:58:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/13 17:37:03 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/14 19:06:34 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main() {
 	int res;
-
-	printf("\nnumbers\n");
+/*
+	printf("\ninteger\n");
 	printf("printf    int 1: %d and go ahead\n", 21);
 	res = ft_printf("ft_printf int 1: %d and go ahead\n", 21);
 	
@@ -40,45 +40,180 @@ int main() {
 
 	printf("printf    int 8: %7.3d and go ahead\n", -21234);
 	res = ft_printf("ft_printf int 8: %7.3d and go ahead\n", -21234);
+*/
+/*	printf("printf    unsigned int 1: %5u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 1: %5u and go ahead\n", 2147483647);
 	
-	printf("printf    unsigned int 8: %5u and go ahead\n", 2147483647);
-	res = ft_printf("ft_printf unsigned int 8: %5u and go ahead\n", 2147483647);
+	printf("printf    unsigned int 2: %15.5u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 2: %15.5u and go ahead\n", 2147483647);
 	
-	printf("printf    unsigned int 9: %15.5u and go ahead\n", 2147483647);
-	res = ft_printf("ft_printf unsigned int 9: %15.5u and go ahead\n", 2147483647);
+	printf("printf    unsigned int 3: %13.20u and go ahead\n", 2147483647);
+	res = ft_printf("ft_printf unsigned int 3: %13.20u and go ahead\n", 2147483647);
+
+	printf("printf    unsigned int 4: %13.20u and go ahead\n", -2147483647);
+	res = ft_printf("ft_printf unsigned int 4: %13.20u and go ahead\n", -2147483647);
+
+	printf("printf    unsigned int 5: %3.2u and go ahead\n", -2147483647);
+	res = ft_printf("ft_printf unsigned int 5: %3.2u and go ahead\n", -2147483647);
+    
+    printf("printf    octet 6: %3.7o and go ahead\n", -21234);
+    res = ft_printf("ft_printf octet 6: %3.7o and go ahead\n", -21234);
+    
+    printf("printf    octet 7: %3o and go ahead\n", 21234);
+    res = ft_printf("ft_printf octet 7: %3o and go ahead\n", 21234);
+    
+    printf("printf    octet 8: %5o and go ahead\n", 2147483647);
+    res = ft_printf("ft_printf octet 8: %5o and go ahead\n", 2147483647);
+    
+    printf("printf    octet 9: %15.5o and go ahead\n", 2147483647);
+    res = ft_printf("ft_printf octet 9: %15.5o and go ahead\n", 2147483647);
+    
+    printf("printf    octet 10: %13.20o and go ahead\n", 2147483647);
+    res = ft_printf("ft_printf octet 10: %13.20o and go ahead\n", 2147483647);
+    
+    printf("printf    octet 11: %13.20o and go ahead\n", -2147483647);
+    res = ft_printf("ft_printf octet 11: %13.20o and go ahead\n", -2147483647);
+    
+    printf("printf    octet 12: %15.5o and go ahead\n", -214748);
+    res = ft_printf("ft_printf octet 12: %15.5o and go ahead\n", -214748);
+    
+    printf("printf    long octet 1: %2.13lo and go ahead\n", 4000000000);
+    res = ft_printf("ft_printf long octet 1: %2.13lo and go ahead\n", 4000000000);
+    
+    printf("printf    long octet 2: %13.2lo and go ahead\n", 4300000000);
+    res = ft_printf("ft_printf long octet 2: %13.2lo and go ahead\n", 4300000000);
+    
+    printf("printf    long octet 3: %3.12lo and go ahead\n", 9300000000);
+    res = ft_printf("ft_printf long octet 3: %3.12lo and go ahead\n", 9300000000);
+    
+    printf("itoa_ul test: %s\n", ft_itoa_base_ul(9300000000, 8, 0));
+    
+    printf("printf    long octet 4: %3.12lo and go ahead\n", -9030100100);
+    res = ft_printf("ft_printf long octet 4: %3.12lo and go ahead\n", -9030100100);
+    
+    printf("printf    long octet 5: %13.2lo and go ahead\n", -4300000000);
+    res = ft_printf("ft_printf long octet 5: %13.2lo and go ahead\n", -4300000000);
+    
+    printf("printf    long long octet 1: %3.2llo and go ahead\n", (long long)40100100100111222);
+    res = ft_printf("ft_printf long long octet 1: %3.2llo and go ahead\n", 40100100100111222);
+    
+    printf("printf    long long octet 2: %13.2llo and go ahead\n", (long long)43100100100111222);
+    res = ft_printf("ft_printf long long octet 2: %13.2llo and go ahead\n", 43100100100111222);
+    
+    printf("printf    long long octet 3: %3.12llo and go ahead\n", (long long)903100100100111222);
+    res = ft_printf("ft_printf long long octet 3: %3.12llo and go ahead\n", 903100100100111222);
+    
+    printf("printf    long long octet 4: %3.2llo and go ahead\n", (long long)-40100100100111222);
+    res = ft_printf("ft_printf long long octet 4: %3.2llo and go ahead\n", -40100100100111222);
+    
+    printf("printf    long long octet 5: %3.12llo and go ahead\n", (long long)-9030100100111222333);
+    res = ft_printf("ft_printf long long octet 5: %3.12llo and go ahead\n", -9030100100111222333);
+    
+    printf("printf    short octet 1: %3.2ho and go ahead\n", (short int)30700);
+    res = ft_printf("ft_printf short octet 1: %3.2ho and go ahead\n", 30700);
+    
+    printf("printf    short octet 2: %13.2ho and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short octet 2: %13.2ho and go ahead\n", -30700);
+    
+    printf("printf    short octet 3: %3.12ho and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short octet 3: %3.12ho and go ahead\n", -9123);
+    
+    printf("printf    short octet 4: %ho and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short octet 4: %ho and go ahead\n", -9123);
+    
+    printf("printf    short octet 5: %ho and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short octet 5: %ho and go ahead\n", -30700);
+    
+    printf("printf    short short octet 1: %3.2hho and go ahead\n", (signed char)126);
+    res = ft_printf("ft_printf short short octet 1: %3.2hho and go ahead\n", 126);
+    
+    printf("printf    short short octet 2: %13.2hho and go ahead\n", (signed char)-120);
+    res = ft_printf("ft_printf short short octet 2: %13.2hho and go ahead\n", -120);
+    
+    printf("printf    short short octet 3: %3.12hho and go ahead\n", (signed char)-128);
+    res = ft_printf("ft_printf short short octet 3: %3.12hho and go ahead\n", -128);
+    
+    printf("printf    short short octet 4: %hho and go ahead\n", (signed char)-9123);
+    res = ft_printf("ft_printf short short octet 4: %hho and go ahead\n", -9123);
+    
+    printf("printf    short short octet 5: %hho and go ahead\n", (signed char)-30700);
+    res = ft_printf("ft_printf short short octet 5: %hho and go ahead\n", -30700);
+    
+    printf("printf    short short octet 6: %hho and go ahead\n", (signed char)127);
+    res = ft_printf("ft_printf short short octet 4: %hho and go ahead\n", 127);
+*/
+ /*
+	printf("printf    long int 1: %3.2li and go ahead\n", 4000000000);
+	res = ft_printf("ft_printf long int 1: %3.2li and go ahead\n", 4000000000);
+
+	printf("printf    long int 2: %13.2ld and go ahead\n", 4300000000);
+	res = ft_printf("ft_printf long int 2: %13.2ld and go ahead\n", 4300000000);	
+
+	printf("printf    long int 3: %3.12li and go ahead\n", 9300000000);
+	res = ft_printf("ft_printf long int 3: %3.12li and go ahead\n", 9300000000);	
 	
-	printf("printf    unsigned int 10: %13.20u and go ahead\n", 2147483647);
-	res = ft_printf("ft_printf unsigned int 10: %13.20u and go ahead\n", 2147483647);
+ 	printf("printf    long int 4: %3.12li and go ahead\n", -9030100100);
+	res = ft_printf("ft_printf long int 4: %3.12li and go ahead\n", -9030100100);
 
-	printf("printf    unsigned int 11: %13.20u and go ahead\n", -2147483647);
-	res = ft_printf("ft_printf unsigned int 11: %13.20u and go ahead\n", -2147483647);
+	printf("printf    long int 5: %13.2ld and go ahead\n", -4300000000);
+	res = ft_printf("ft_printf long int 5: %13.2ld and go ahead\n", -4300000000);
 
-	printf("printf    unsigned int 12: %3.2u and go ahead\n", -2147483647);
-	res = ft_printf("ft_printf unsigned int 12: %3.2u and go ahead\n", -2147483647);
-
-	printf("printf    long int 13: %3.2li and go ahead\n", 4000000000);
-	res = ft_printf("ft_printf long int 13: %3.2li and go ahead\n", 4000000000);
-
-	printf("printf    long int 14: %13.2ld and go ahead\n", 4300000000);
-	res = ft_printf("ft_printf long int 14: %13.2ld and go ahead\n", 4300000000);	
-
-	printf("printf    long int 15: %3.12li and go ahead\n", 9300000000);
-	res = ft_printf("ft_printf long int 15: %3.12li and go ahead\n", 9300000000);	
-	
-	printf("itoa_li test 1: %s\n", ft_itoa_base_li(9300000000, 10, 0));
-	printf("itoa_li test 2: %s\n", ft_itoa_base_li(4300000000, 10, 0));
+    printf("printf    long long int 1: %3.2lli and go ahead\n", (long long)40100100100111222);
+    res = ft_printf("ft_printf long long int 1: %3.2lli and go ahead\n", 40100100100111222);
     
-    printf("printf    short int 13: %3.2hi and go ahead\n", (short int)30700);
-    res = ft_printf("ft_printf short int 13: %3.2hi and go ahead\n", 30700);
+    printf("printf    long long int 2: %13.2lld and go ahead\n", (long long)43100100100111222);
+    res = ft_printf("ft_printf long long int 2: %13.2lld and go ahead\n", 43100100100111222);
     
-    printf("printf    short int 14: %13.2hd and go ahead\n", (short int)-30700);
-    res = ft_printf("ft_printf short int 14: %13.2hd and go ahead\n", -30700);
+    printf("printf    long long int 3: %3.12lli and go ahead\n", (long long)903100100100111222);
+    res = ft_printf("ft_printf long long int 3: %3.12lli and go ahead\n", 903100100100111222);
     
-    printf("printf    short int 15: %3.12hi and go ahead\n", (short int)-9123);
-    res = ft_printf("ft_printf short int 15: %3.12hi and go ahead\n", -9123);
+	printf("printf    long long int 4: %3.2lli and go ahead\n", (long long)-40100100100111222);
+	res = ft_printf("ft_printf long long int 4: %3.2lli and go ahead\n", -40100100100111222);
+
+	printf("printf    long long int 5: %3.12lli and go ahead\n", (long long)-9030100100111222333);
+	res = ft_printf("ft_printf long long int 5: %3.12lli and go ahead\n", -9030100100111222333);
     
-/*
-    printf("-------------------------------------------------\n");
+    printf("printf    long long int 6: %3.12lli and go ahead\n", (long long)-90301001001112223334);
+    res = ft_printf("ft_printf long long int 6: %3.12lli and go ahead\n", -90301001001112223334);
+
+    printf("itoa_li test 1: %s\n", ft_itoa_base_li(9300000000111, 10, 0));
+    printf("itoa_li test 2: %s\n", ft_itoa_base_li(4300000000111, 10, 0));
+
+    printf("printf    short int 1: %3.2hi and go ahead\n", (short int)30700);
+    res = ft_printf("ft_printf short int 1: %3.2hi and go ahead\n", 30700);
+    
+    printf("printf    short int 2: %13.2hd and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short int 2: %13.2hd and go ahead\n", -30700);
+    
+    printf("printf    short int 3: %3.12hi and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short int 3: %3.12hi and go ahead\n", -9123);
+
+	printf("printf    short int 4: %hi and go ahead\n", (short int)-9123);
+	res = ft_printf("ft_printf short int 4: %hi and go ahead\n", -9123);
+
+	printf("printf    short int 5: %hd and go ahead\n", (short int)-30700);
+	res = ft_printf("ft_printf short int 5: %hd and go ahead\n", -30700);
+
+    printf("printf    short short int 1: %3.2hhi and go ahead\n", (signed char)126);
+    res = ft_printf("ft_printf short short int 1: %3.2hhi and go ahead\n", 126);
+    
+    printf("printf    short short int 2: %13.2hhd and go ahead\n", (signed char)-120);
+    res = ft_printf("ft_printf short short int 2: %13.2hhd and go ahead\n", -120);
+    
+    printf("printf    short short int 3: %3.12hhi and go ahead\n", (signed char)-128);
+    res = ft_printf("ft_printf short short int 3: %3.12hhi and go ahead\n", -128);
+    
+    printf("printf    short short int 4: %hhi and go ahead\n", (signed char)-9123);
+    res = ft_printf("ft_printf short short int 4: %hhi and go ahead\n", -9123);
+    
+    printf("printf    short short int 5: %hhd and go ahead\n", (signed char)-30700);
+    res = ft_printf("ft_printf short short int 5: %hhd and go ahead\n", -30700);
+
+	printf("printf    short short int 6: %hhd and go ahead\n", (signed char)127);
+	res = ft_printf("ft_printf short short int 4: %hhd and go ahead\n", 127);
+*/
+
+    printf("\n-------------------------------------------------\n");
     printf("octet type\n");
     printf("printf    octet 1: %o and go ahead\n", 21);
     res = ft_printf("ft_printf octet 1: %o and go ahead\n", 21);
@@ -115,8 +250,72 @@ int main() {
 
 	printf("printf    octet 12: %15.5o and go ahead\n", -214748);
 	res = ft_printf("ft_printf octet 12: %15.5o and go ahead\n", -214748);
+
+    printf("printf    long octet 1: %2.13lo and go ahead\n", 4000000000);
+    res = ft_printf("ft_printf long octet 1: %2.13lo and go ahead\n", 4000000000);
     
-    printf("-------------------------------------------------\n");
+    printf("printf    long octet 2: %13.2lo and go ahead\n", 4300000000);
+    res = ft_printf("ft_printf long octet 2: %13.2lo and go ahead\n", 4300000000);
+    
+    printf("printf    long octet 3: %3.12lo and go ahead\n", 9300000000);
+    res = ft_printf("ft_printf long octet 3: %3.12lo and go ahead\n", 9300000000);  
+  
+    printf("printf    long octet 4: %3.12lo and go ahead\n", -9030100100);
+    res = ft_printf("ft_printf long octet 4: %3.12lo and go ahead\n", -9030100100);
+    
+    printf("printf    long octet 5: %13.2lo and go ahead\n", -4300000000);
+    res = ft_printf("ft_printf long octet 5: %13.2lo and go ahead\n", -4300000000);
+
+    printf("printf    long long octet 1: %3.2llo and go ahead\n", (long long)40100100100111222);
+    res = ft_printf("ft_printf long long octet 1: %3.2llo and go ahead\n", 40100100100111222);
+    
+    printf("printf    long long octet 2: %13.2llo and go ahead\n", (long long)43100100100111222);
+    res = ft_printf("ft_printf long long octet 2: %13.2llo and go ahead\n", 43100100100111222);
+    
+    printf("printf    long long octet 3: %3.12llo and go ahead\n", (long long)903100100100111222);
+    res = ft_printf("ft_printf long long octet 3: %3.12llo and go ahead\n", 903100100100111222);
+    
+    printf("printf    long long octet 4: %3.2llo and go ahead\n", (long long)-40100100100111222);
+    res = ft_printf("ft_printf long long octet 4: %3.2llo and go ahead\n", -40100100100111222);
+    
+    printf("printf    long long octet 5: %3.12llo and go ahead\n", (long long)-9030100100111222333);
+    res = ft_printf("ft_printf long long octet 5: %3.12llo and go ahead\n", -9030100100111222333);
+
+    printf("printf    short octet 1: %3.2ho and go ahead\n", (short int)30700);
+    res = ft_printf("ft_printf short octet 1: %3.2ho and go ahead\n", 30700);
+    
+    printf("printf    short octet 2: %13.2ho and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short octet 2: %13.2ho and go ahead\n", -30700);
+    
+    printf("printf    short octet 3: %3.12ho and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short octet 3: %3.12ho and go ahead\n", -9123);
+    
+    printf("printf    short octet 4: %ho and go ahead\n", (short int)-9123);
+    res = ft_printf("ft_printf short octet 4: %ho and go ahead\n", -9123);
+    
+    printf("printf    short octet 5: %ho and go ahead\n", (short int)-30700);
+    res = ft_printf("ft_printf short octet 5: %ho and go ahead\n", -30700);
+ 
+    printf("printf    short short octet 1: %3.2hho and go ahead\n", (signed char)126);
+    res = ft_printf("ft_printf short short octet 1: %3.2hho and go ahead\n", 126);
+    
+    printf("printf    short short octet 2: %13.2hho and go ahead\n", (signed char)-120);
+    res = ft_printf("ft_printf short short octet 2: %13.2hho and go ahead\n", -120);
+    
+    printf("printf    short short octet 3: %3.12hho and go ahead\n", (signed char)-128);
+    res = ft_printf("ft_printf short short octet 3: %3.12hho and go ahead\n", -128);
+    
+    printf("printf    short short octet 4: %hho and go ahead\n", (signed char)-9123);
+    res = ft_printf("ft_printf short short octet 4: %hho and go ahead\n", -9123);
+    
+    printf("printf    short short octet 5: %hho and go ahead\n", (signed char)-30700);
+    res = ft_printf("ft_printf short short octet 5: %hho and go ahead\n", -30700);
+    
+    printf("printf    short short octet 6: %hho and go ahead\n", (signed char)127);
+    res = ft_printf("ft_printf short short octet 4: %hho and go ahead\n", 127);
+
+/*
+    printf("\n-------------------------------------------------\n");
     printf("hex type\n");
     printf("printf    hex 1: %x and go ahead\n", 21);
     res = ft_printf("ft_printf hex 1: %x and go ahead\n", 21);
@@ -183,7 +382,7 @@ int main() {
 	printf("printf    pointer char 3: %20p\n", str_ptr);
 	res = ft_printf("ft_printf pointer char 3: %20p\n", str_ptr);
 
-	printf("----------------------------------------------------------------\n");
+	printf("\n----------------------------------------------------------------\n");
 	printf("\nchar\n");
 	printf("printf    char 1: %10c and go ahead\n", 'A');
    	res = ft_printf("ft_printf char 1: %10c and go ahead\n", 'A');
@@ -191,6 +390,7 @@ int main() {
 	printf("printf    char 1: %3c and go ahead\n", 'z');
 	res = ft_printf("ft_printf char 1: %3c and go ahead\n", 'z');
 	
+	printf("\n----------------------------------------------------------------\n");
 	printf("\nstring\n");
 	printf("printf    string 1: %13.5s and go ahead\n", "Test_strinG");
 	res = ft_printf("ft_printf string 1: %13.5s and go ahead\n", "Test_strinG");
@@ -206,18 +406,8 @@ int main() {
 
 	printf("printf    string 5: %3.0s and go ahead\n", "Test_strinG");
 	res = ft_printf("ft_printf string 5: %3.0s and go ahead\n", "Test_strinG");
-
-//	res = ft_printf("test parse 1: %13s\n", "test");
-
-//	res = ft_printf("test parse 2: %04.4x\n", "test");
-
-//	res = ft_printf("test parse 8: %.5s\n", "test");
-
-//	res = ft_printf("test parse 20: %-5s\n", "ab");
-
-
 	
-	printf("------------------------------------------------------------------\n");
+	printf("\n----------------------------------------------------------------\n");
 	printf("float, double\n");
 	printf("printf    double 1: %.5f and go on\n", 771.83335);
 	res = ft_printf("ft_printf double 1: %.5f and go on\n", 771.83335);
@@ -240,9 +430,6 @@ int main() {
 	printf("printf    double 7: %12.4f\n", 771.833);
 	res = ft_printf("ft_printf double 7: %12.4f\n", 771.833);
 
-//	printf("printf    double 8: %010.2lf\n", 771.833);
-//	res = ft_printf("ft_printf double 8: %010.2lf\n", 771.833);
-
 	printf("printf    double 9: %.7f\n", 2.7182818);
 	res = ft_printf("ft_printf double 9: %.7f\n", 2.7182818);
 
@@ -254,13 +441,6 @@ int main() {
 
 	printf("printf    double 12: %7.2f\n", -783.234);
 	res = ft_printf("ft_printf double 12: %7.2f\n", -783.234);
-
-//	res = ft_printf("test parse 24: %+-5.1f\n", 2.7182818);
-//	res = ft_printf("test parse 9: %0*.*f\n", 771.833);
-
-
-//	res = ft_printf("test parse 3: %0*.*x\n", "test");
-//	res = ft_printf("test parse 5: %.60g\n", "test");
 */
 	return (0);
 }

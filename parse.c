@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 21:11:16 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/14 15:02:35 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int ft_prm_parse(char *str, t_param *prm)
 */
 	if (str[i] == 'h' || str[i] == 'l' || str[i] == 'L')
 		prm->mod = str[i++];
+	if (str[i] == 'h' || str[i] == 'l')
+		prm->mod_2 = str[i++];
 /*
 ** parse type
 */
@@ -97,5 +99,6 @@ void ft_prm_init(t_param *p)
 	p->width = -1;
 	p->precision = -1;
 	p->mod = 'Z';
+	p->mod_2 = 'Z';
 	p->type = 'Z';
 }

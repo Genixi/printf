@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/13 17:30:57 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/14 22:01:35 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,42 @@ void ft_display_int(va_list ap, t_param *prm)
 
 	s = prm->type;
 	if (s == 'd' || s == 'i')
-		if (prm->mod == 'l')
+		if (prm->mod == 'l' && prm->mod_2 == 'Z')
+			ft_putnbr_li((long int)va_arg(ap, long int), prm);
+		else if (prm->mod == 'l' && prm->mod_2 == 'l')
 			ft_putnbr_li((unsigned long long int)va_arg(ap, unsigned long long int), prm);
-		else if (prm->mod == 'h')
+		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
 			ft_putnbr_hi((short int)va_arg(ap, int), prm);
+		else if (prm->mod == 'h' && prm->mod_2 == 'h')
+			ft_putnbr_hhi((signed char)va_arg(ap, int), prm);
 		else
 			ft_putnbr_i(va_arg(ap, int), prm);
 	else if (s == 'u')
-		ft_putnbr_u((unsigned int)va_arg(ap, unsigned int), prm);
+		if (prm->mod == 'l' && prm->mod_2 == 'Z')
+			ft_putnbr_lu((long int)va_arg(ap, long int), prm);
+		else if (prm->mod == 'l' && prm->mod_2 == 'l')
+			ft_putnbr_li((unsigned long long int)va_arg(ap, unsigned long long int), prm);
+		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
+			ft_putnbr_hu((unsigned short int)va_arg(ap, int), prm);
+		else if (prm->mod == 'h' && prm->mod_2 == 'h')
+			ft_putnbr_hhu((unsigned char)va_arg(ap, int), prm);
+		else
+			ft_putnbr_u((unsigned int)va_arg(ap, unsigned int), prm);
 	else if (s == 'x')
 		ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 0);
 	else if (s == 'X')
 		ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 1);
 	else if (s == 'o')
-		ft_putnbr_oct((unsigned int)va_arg(ap, unsigned int), prm);
+		if (prm->mod == 'l' && prm->mod_2 == 'Z')
+			ft_putnbr_lo((unsigned long int)va_arg(ap, unsigned long int), prm);
+		else if (prm->mod == 'l' && prm->mod_2 == 'l')
+			ft_putnbr_lo((unsigned long long int)va_arg(ap, unsigned long long int), prm);
+		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
+			ft_putnbr_ho((unsigned short int)va_arg(ap, int), prm);
+		else if (prm->mod == 'h' && prm->mod_2 == 'h')
+			ft_putnbr_hho((unsigned char)va_arg(ap, int), prm);
+		else
+			ft_putnbr_oct((unsigned int)va_arg(ap, unsigned int), prm);
 	else if( s == 'p')
 		ft_putnbr_ptr((unsigned long long int)va_arg(ap, unsigned long long int), prm, 0);
 }
