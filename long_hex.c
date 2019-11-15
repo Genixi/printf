@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_uns.c                                         :+:      :+:    :+:   */
+/*   long_hex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/14 20:12:49 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 15:12:12 by equiana          ###   ########.fr       */
+/*   Created: 2019/11/15 15:47:14 by equiana           #+#    #+#             */
+/*   Updated: 2019/11/15 16:39:02 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void    ft_putnbr_lu(unsigned long int n, t_param *prm)
+void    ft_putnbr_lx(unsigned long int n, t_param *prm, int cap)
 {
     int size;
     int i;
@@ -24,7 +24,7 @@ void    ft_putnbr_lu(unsigned long int n, t_param *prm)
     char* str;
     char* nbr_str;
     
-    size = ft_strlen(ft_itoa_base_ul(n, 10, 0));
+    size = ft_strlen(ft_itoa_base_ul(n, 16, cap));
     nbr_str = NULL;
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
     //  printf(" width: %d, size: %d ", width, size);
@@ -36,7 +36,7 @@ void    ft_putnbr_lu(unsigned long int n, t_param *prm)
             char_fill(str, width + 1, ' ');
         else
             char_fill(str, width + 1, '0');
-        nbr_str = ft_itoa_base_ul(n, 10, 0);
+        nbr_str = ft_itoa_base_ul(n, 16, cap);
         //обработать если itoa вернет  NULL
         i = width - size;
         //        printf("i: %d\n", i);
@@ -48,9 +48,8 @@ void    ft_putnbr_lu(unsigned long int n, t_param *prm)
         }
     }
     else
-        str = ft_itoa_base_ul(n, 10, 0);
+        str = ft_itoa_base_ul(n, 16, cap);
     ft_putstr(str);
     free(str);
     free(nbr_str);
 }
-

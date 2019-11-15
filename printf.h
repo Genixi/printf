@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/14 22:01:40 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:16:39 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,25 @@ void				ft_prm_init(t_param *p);
 void				ft_putnbr_i(int n, t_param *prm);
 void				ft_putnbr_u(unsigned int n, t_param *prm);
 void				ft_putnbr_l(long l);
+void				ft_putnbr_f(double n, t_param *prm);
 void				ft_putnbr_li(long int n, t_param *prm);
 void				ft_putnbr_lo(unsigned long int n, t_param *prm);
+void				ft_putnbr_lx(unsigned long ont, t_param *prm, int cap);
 void				ft_putnbr_hi(short int n, t_param *prm);
-void				ft_putnbr_ho(unsigned short int n, t_param *prm);				//short_oct.c
+void				ft_putnbr_ho(unsigned short int n, t_param *prm);	//short_oct.c
 void				ft_putnbr_lu(unsigned long int n, t_param *prm);
 void				ft_putnbr_hu(unsigned short int n, t_param *prm);
+void				ft_putnbr_hx(unsigned short int m, t_param *prm, int cap);
 void				ft_putnbr_hhi(signed char n, t_param *prm);
 void				ft_putnbr_hho(unsigned char o, t_param *prm);
 void				ft_putnbr_hhu(unsigned char n, t_param *prm);
+void				ft_putnbr_hhx(unsigned char n, t_param *prm, int cap);
 void				ft_putnbr_hex(unsigned int value, t_param *prm, int cap);
 void				ft_putnbr_oct(unsigned int value, t_param *prm);
 void				ft_putnbr_ptr(unsigned long long int value, t_param *prm, int cap);
 void				ft_put_char(char c, t_param *prm);
 void				ft_put_str(char *s, t_param *prm);
 void				char_fill(char *str, int len, char c); 
-void				ft_display_float(va_list ap, t_param *p);
 void				ft_error(int n);
 void				display_str(t_param *p);
 char				*ft_itoa_base_li(long int value, int base, int cap);

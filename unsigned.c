@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 15:15:40 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/13 13:58:28 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 17:18:10 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void    ft_putnbr_u(unsigned int n, t_param *prm)
 			char_fill(str, width + 1, ' ');
 		else
 			char_fill(str, width + 1, '0');
+		if (prm->width > prm->precision && prm->precision > size)
+			char_fill(str + prm->width - prm->precision, prm->precision, '0');
 		nbr_str = ft_itoa_base_u(n, 10, 0);
 		//обработать если itoa вернет  NULL
 		i = width - size - 1;

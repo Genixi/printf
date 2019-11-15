@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/14 22:01:35 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 20:15:10 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void ft_display_int(va_list ap, t_param *prm)
 		if (prm->mod == 'l' && prm->mod_2 == 'Z')
 			ft_putnbr_lu((long int)va_arg(ap, long int), prm);
 		else if (prm->mod == 'l' && prm->mod_2 == 'l')
-			ft_putnbr_li((unsigned long long int)va_arg(ap, unsigned long long int), prm);
+			ft_putnbr_lu((unsigned long long int)va_arg(ap, unsigned long long int), prm);
 		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
 			ft_putnbr_hu((unsigned short int)va_arg(ap, int), prm);
 		else if (prm->mod == 'h' && prm->mod_2 == 'h')
@@ -59,9 +59,27 @@ void ft_display_int(va_list ap, t_param *prm)
 		else
 			ft_putnbr_u((unsigned int)va_arg(ap, unsigned int), prm);
 	else if (s == 'x')
-		ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 0);
+		if (prm->mod == 'l' && prm->mod_2 == 'Z')
+			ft_putnbr_lx((unsigned long int)va_arg(ap, unsigned long int), prm, 0);
+		else if (prm->mod == 'l' && prm->mod_2 == 'l')
+			ft_putnbr_lx((unsigned long long int)va_arg(ap, unsigned long long int), prm, 0);
+		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
+			ft_putnbr_hx((unsigned short int)va_arg(ap, int), prm, 0);
+		else if (prm->mod == 'h' && prm->mod_2 == 'h')
+			ft_putnbr_hhx((unsigned char)va_arg(ap, int), prm, 0);
+		else
+			ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 0);
 	else if (s == 'X')
-		ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 1);
+		if (prm->mod == 'l' && prm->mod_2 == 'Z')
+			ft_putnbr_lx((unsigned long int)va_arg(ap, unsigned long int), prm, 1);
+		else if (prm->mod == 'l' && prm->mod_2 == 'l')
+			ft_putnbr_lx((unsigned long long int)va_arg(ap, unsigned long long int), prm, 1);
+		else if (prm->mod == 'h' && prm->mod_2 == 'Z')
+			ft_putnbr_hx((unsigned short int)va_arg(ap, int), prm, 1);
+		else if (prm->mod == 'h' && prm->mod_2 == 'h')
+			ft_putnbr_hhx((unsigned char)va_arg(ap, int), prm, 1);
+		else
+			ft_putnbr_hex((unsigned int)va_arg(ap, unsigned int), prm, 1);
 	else if (s == 'o')
 		if (prm->mod == 'l' && prm->mod_2 == 'Z')
 			ft_putnbr_lo((unsigned long int)va_arg(ap, unsigned long int), prm);
@@ -75,6 +93,16 @@ void ft_display_int(va_list ap, t_param *prm)
 			ft_putnbr_oct((unsigned int)va_arg(ap, unsigned int), prm);
 	else if( s == 'p')
 		ft_putnbr_ptr((unsigned long long int)va_arg(ap, unsigned long long int), prm, 0);
+}
+
+void	ft_display_float(va_list ap, t_param *prm)
+{
+	if (prm->mod == 'l' || prm->mod == 'L')
+	{
+//		ft_putnbr_lf((double)va_arg(ap, double), prm);
+	}
+	else
+		ft_putnbr_f((double)va_arg(ap, double), prm);
 }
 
 void ft_display(va_list ap, t_param *prm)

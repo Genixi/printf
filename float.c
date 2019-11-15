@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 16:41:45 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:31:36 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,4 @@ void    ft_putnbr_f(double n, t_param *prm)
 //!!!! почему то при очисте памяти происходит некорректный вывод - разобраться!!
 //	free(res);
 //	ft_putstr(res);
-}
-
-void	ft_display_float(va_list ap, t_param *prm)
-{
-	double n;
-
-//	printf(" !!case f!! "); 
-	n = (double)va_arg(ap, double);
-	ft_putnbr_f(n, prm);
 }

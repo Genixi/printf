@@ -6,7 +6,7 @@
 #    By: equiana <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 19:12:46 by equiana           #+#    #+#              #
-#    Updated: 2019/11/14 21:59:58 by equiana          ###   ########.fr        #
+#    Updated: 2019/11/15 19:17:07 by equiana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ NAME = printf
 
 CC = clang
 
-SRC = main.c float.c ft_atoi.c printf.c ft_putchar.c ft_putstr.c ft_strlen.c parse.c \
-	  support.c display.c ft_itoa_base.c char.c string.c hex.c \
-	  pointer.c integer.c long_int.c short_int.c short_short.c \
+SRC = main.c ft_atoi.c printf.c ft_putchar.c ft_putstr.c ft_strlen.c parse.c \
+	  support.c display.c ft_itoa_base.c char.c string.c pointer.c \
+	  integer.c long_int.c short_int.c short_short.c \
 	  octet.c long_oct.c short_oct.c short_short_oct.c \
 	  unsigned.c long_uns.c short_uns.c short_short_uns.c \
+	  hex.c long_hex.c short_hex.c short_short_hex.c \
+	  float.c  
 
 OBJ = $(SRC:.c=.o)
 

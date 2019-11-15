@@ -6,10 +6,9 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/12 20:48:17 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 20:20:37 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 #include "printf.h"
@@ -43,7 +42,9 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
 		if (prm->width >= prm->precision)
             char_fill(str, width, ' ');
         else
-            char_fill(str, width, '0');
+			char_fill(str, width, '0');
+		if (prm->width > prm->precision && prm->precision > size)
+			char_fill(str + prm->width - prm->precision, prm->precision, '0'); 
 		str[width] = '\0';
         //!!!обработать если itoa вернет  NULL
         i = width - size - 1;

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:32:20 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/14 17:47:54 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 17:23:38 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,16 @@ void    ft_putnbr_i(int n, t_param *prm)
 			char_fill(str, width + 1, ' ');
 		else
 			char_fill(str, width + 1, '0');
+		if (prm->width > prm->precision && prm->precision > size)
+			char_fill(str + prm->width - prm->precision, prm->precision, '0');
 //		printf("str: %s\n", str);
 		nbr_str = (sign == 1) ? ft_itoa_base(-n, 10) : ft_itoa_base(n, 10);
 		if (sign && prm->width < prm->precision)
 			str[0] = '-';
-		else if (sign && prm->width >= prm->precision)
+		else if (sign && prm->width >= prm->precision && prm->precision <= size)
 			str[width + sign - size - 2] = '-';
+		else if (sign && prm->width >= prm->precision && prm->precision > size)
+			str[prm->width - prm->precision - 1] = '-';
 //		printf("nbr_str: %s\n", nbr_str);
 		//обработать если itoa вернет  NULL
 		i = width + sign - size - 1;

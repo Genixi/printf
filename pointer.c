@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:48:26 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/13 13:39:44 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/15 18:18:15 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include "printf.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-//!!!!!!!!использовать size_t или long int!!!
-
 void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
 {
     int size;
@@ -46,6 +43,8 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
             char_fill(str, width, ' ');
         else
             char_fill(str, width, '0');
+		if (prm->width > prm->precision && prm->precision > size)
+			char_fill(str + prm->width - prm->precision, prm->precision, '0');
 		str[width] = '\0';
         //!!!обработать если itoa вернет  NULL
         i = width - size - 1;
@@ -59,7 +58,10 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
         }
     }
     else
+	{
+		ft_putstr("0x");
 		str = ft_itoa_base_ul(n, 16, cap);
+	}
     ft_putstr(str);
 //!!!почему то не фришиться сразу 2 указателя - разобраться!!
 	free(str);
