@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 20:15:10 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/16 15:17:27 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_display_float(va_list ap, t_param *prm)
 {
 	if (prm->mod == 'l' || prm->mod == 'L')
 	{
-//		ft_putnbr_lf((double)va_arg(ap, double), prm);
+		ft_putnbr_lf((long double)va_arg(ap, long double), prm);
 	}
 	else
 		ft_putnbr_f((double)va_arg(ap, double), prm);

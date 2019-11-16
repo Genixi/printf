@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 19:31:36 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/16 17:20:56 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ static int    get_base(double n, int *base_size)
     return (base);
 }
 
-void    ft_putnbr_f(double n, t_param *prm)
+void ft_putnbr_f(double n, t_param *prm)
 {
 	int sign;
-    int base;
+    int int_float;
+	int fraction;
+	int precision;
+	int dot;
+	int base;
 	int base_size;
     int tmp;
-	int width;
     char *res;
     char *str;
 	int i;
@@ -42,51 +45,34 @@ void    ft_putnbr_f(double n, t_param *prm)
 	j = 0;
 	str = NULL;
 	res = NULL;
-	base_size = 0;
-    base = get_base(n, &base_size) / 10;
-	sign = 0;
-	if (n < 0)
-	{
-		sign = 1;
-		n = -n;
-	}
-	base_size = (base_size == 0) ? 1 : base_size;
-	width = prm->precision;
-	if (!(res = (char*)malloc(sizeof(char) * (base_size + width + sign + 1))))
-        ft_error(1);
-    char_fill(res, base_size + width + sign + 1, '0');
-	res[base + width + sign] = '\0';
-    if (sign)
-		res[i++] = '-';
-	if (base)
-		while ((long)n != 0)
-    	{
-        	res[i] = (char)(n / base + '0');
-        	n = n - (int)(n / base) * base;
-			base = base / 10;
-        	i++;
-    	}
-	else
-		res[i++] = '0';
-	res[i] = '.';
-    i++;
-    n = n * 10;
-// 	printf("res 0: %s ", res);
-	while (i < base_size +  width + sign + 1)
-    {
-		tmp = (int)n;
-		res[i] = (char)(tmp + '0');
-		n = (n - tmp) * 10;	
-		i++;
-    }
-//	printf("res 1: %s ", res);
-	if (prm->width > base_size + width + sign)
+	sign = (n < 0) ? 1 : 0;
+	int_float = (long)n;
+	precision = (prm->precision == -1) ? 6 : prm->precision;
+	fraction = int_float - n;
+	dot = (fraction == 0) ? 0 : 1;
+	if (fraction)
+		while (i < j)
+		{
+			fraction *= 10;
+			i++;
+		}
+	
+	
+	base_size_int = 0;
+	base = get_base(n, &base_size_int) / 10;
+	base_size_fraction = 0;
+	if (fraction)
+		base += get_base_fraction(fraction, &base_size_fraction) / 10;
+	base_size_int = (base_size_int == 0) ? 1 : base_size_int;
+
+	
+	if (prm->width > base_size_int + dot + base_ prm->precision + sign)
 	{
 //		printf("case 1\n");
 		if (!(str= (char*)malloc(sizeof(char) * (prm->width + 1))))
 			ft_error(1);
 		char_fill(str, prm->width + 1, ' ');
-		i = prm->width - (base_size + width + sign) - 1;
+		i = prm->width - (base_size + prm->precision + sign) - 1;
 		j = 0;
 		while (i + j < prm->width + 1)
 		{

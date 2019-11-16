@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 19:16:39 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/16 15:19:44 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void				ft_putnbr_lx(unsigned long ont, t_param *prm, int cap);
 void				ft_putnbr_hi(short int n, t_param *prm);
 void				ft_putnbr_ho(unsigned short int n, t_param *prm);	//short_oct.c
 void				ft_putnbr_lu(unsigned long int n, t_param *prm);
+void				ft_putnbr_lf(long double n, t_param *prm);
 void				ft_putnbr_hu(unsigned short int n, t_param *prm);
 void				ft_putnbr_hx(unsigned short int m, t_param *prm, int cap);
 void				ft_putnbr_hhi(signed char n, t_param *prm);

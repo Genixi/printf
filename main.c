@@ -15,7 +15,7 @@
 
 int main() {
 	int res;
-
+/*
 	printf("\ninteger\n");
 	printf("printf    int 1: %d and go ahead\n", 21);
 	res = ft_printf("ft_printf int 1: %d and go ahead\n", 21);
@@ -552,20 +552,16 @@ int main() {
     printf("printf    string 9: %30.5s and go ahead\n", "Test _strinG G G G G G");
     res = ft_printf("ft_printf string 9: %30.5s and go ahead\n", "Test _strinG G G G G G");
 
-/*
+*/
 
     printf("\n----------------------------------------------------------------\n");
 	printf("float, double\n");
-    
-    printf("printf float: %lf and go on\n", 25.21);
-    printf("printf lf: %10lf and go on\n", 25.21);
-    printf("printf LF: %LF and go on\n", (long double)25.21 );
-    
-	printf("printf    double 1: %.5f and go on\n", 771.83335);
+
+    printf("printf    double 1: %.5f and go on\n", 771.83335);
 	res = ft_printf("ft_printf double 1: %.5f and go on\n", 771.83335);
-	
-	printf("printf    double 2: %9.3f and go on\n", -783.234);
-	res = ft_printf("ft_printf double 2: %9.3f and go on\n", -783.234);
+
+    printf("printf    double 2: %15.6f and go on\n", -783.234);
+	res = ft_printf("ft_printf double 2: %15.6f and go on\n", -783.234);
 
 	printf("printf    double 3: %.2f\n", 0.385);
 	res = ft_printf("ft_printf double 3: %.2f\n", 0.385);
@@ -582,8 +578,8 @@ int main() {
 	printf("printf    double 7: %12.4f\n", 771.833);
 	res = ft_printf("ft_printf double 7: %12.4f\n", 771.833);
 
-	printf("printf    double 9: %.7f\n", 2.7182818);
-	res = ft_printf("ft_printf double 9: %.7f\n", 2.7182818);
+	printf("printf    double 9: %.7f\n", -2.7182818);
+	res = ft_printf("ft_printf double 9: %.7f\n", -2.7182818);
 
 	printf("printf    double 10: %5.0f\n", 2.7182818);
 	res = ft_printf("ft_printf double 10: %5.0f\n", 2.7182818);
@@ -591,14 +587,110 @@ int main() {
 	printf("printf    double 11: %5.1f\n", 2.7182818);
 	res = ft_printf("ft_printf double 11: %5.1f\n", 2.7182818);
 
-	printf("printf    double 12: %7.2f\n", -783.234);
-	res = ft_printf("ft_printf double 12: %7.2f\n", -783.234);
+	printf("printf    double 12: %12.2f\n", -783.234);
+	res = ft_printf("ft_printf double 12: %12.2f\n", -783.234);
  
     printf("printf    double 13: %12.4f\n", 783.234);
     res = ft_printf("ft_printf double 13: %12.4f\n", 783.234);
  
     printf("printf    double 14: %.0f\n", 783.234);
     res = ft_printf("ft_printf double 14: %.0f\n", 783.234);
-*/
+    
+    printf("printf    double 15: %.0f\n", 783.734);
+    res = ft_printf("ft_printf double 15: %.0f\n", 783.734);
+    
+    printf("printf    double 16: %.20f\n", 783.73334);
+    res = ft_printf("ft_printf double 16: %.20f\n", 783.73334);
+    
+    printf("printf    double 17: %.20f\n", -0.837333554);
+    res = ft_printf("ft_printf double 17: %.20f\n", -0.7333554);
+    
+    printf("printf    double 18: %.20f\n", 783.73334);
+    res = ft_printf("ft_printf double 18: %.20f\n", 783.73334);
+    
+    printf("printf    double 19: %f\n", -0.837333554);
+    res = ft_printf("ft_printf double 19: %f\n", -0.7333554);
+    
+    printf("printf    double 20: %f\n", 783.73334);
+    res = ft_printf("ft_printf double 20: %f\n", 783.73334);
+ /*
+    printf("printf    long double 1: %.5lf and go on\n", 771.83335);
+    res = ft_printf("ft_printf long double 1: %.5lf and go on\n", 771.83335);
+    
+    printf("printf    long double 2: %9.3lf and go on\n", -783.234);
+    res = ft_printf("ft_printf long double 2: %9.3lf and go on\n", -783.234);
+    
+    printf("printf    long double 3: %.2lf\n", 0.385);
+    res = ft_printf("ft_printf long double 3: %.2lf\n", 0.385);
+    
+    printf("printf    long double 4: %.6lf\n", 11111.11111);
+    res = ft_printf("ft_printf long double 4: %.6lf\n", 11111.11111);
+    
+    printf("printf    long double 5: %.3lf and go on\n", 00.385);
+    res = ft_printf("ft_printf long double 5: %.3lf and go on\n", 00.385);
+    
+    printf("printf    long double 6: %3.6lf\n", 24.00385);
+    res = ft_printf("ft_printf long double 6: %2.6lf\n", 24.00385);
+    
+    printf("printf    long double 7: %12.4lf\n", 771.833);
+    res = ft_printf("ft_printf long double 7: %12.4lf\n", 771.833);
+    
+    printf("printf    long double 9: %.7lf\n", 2.7182818);
+    res = ft_printf("ft_printf long double 9: %.7lf\n", 2.7182818);
+    
+    printf("printf    long double 10: %5.0lf\n", -2.7182818);
+    res = ft_printf("ft_printf long double 10: %5.0lf\n", -2.7182818);
+    
+    printf("printf    long double 11: %5.1lf\n", 2.7182818);
+    res = ft_printf("ft_printf long double 11: %5.1lf\n", 2.7182818);
+    
+    printf("printf    long double 12: %7.2lf\n", -783.234);
+    res = ft_printf("ft_printf long double 12: %7.2lf\n", -783.234);
+    
+    printf("printf    long double 13: %12.4lf\n", 783.234);
+    res = ft_printf("ft_printf long double 13: %12.4lf\n", 783.234);
+    
+    printf("printf    long double 14: %.0lf\n", 7800000000003.234);
+    res = ft_printf("ft_printf long double 14: %.0lf\n", 7800000000003.234);
+    
+    printf("printf    Long double 1: %.5Lf and go on\n", (long double)7000000000071.83335);
+    res = ft_printf("ft_printf Long double 1: %.5Lf and go on\n", 7000000000071.83335);
+    
+    printf("printf    Long double 2: %9.3Lf and go on\n", (long double)-7000000000083.234);
+    res = ft_printf("ft_printf Long double 2: %9.3Lf and go on\n", -7000000000083.234);
+    
+    printf("printf    Long double 3: %.2Lf\n", (long double)0.0000000000385);
+    res = ft_printf("ft_printf Long double 3: %.2Lf\n", 0.0000000000385);
+    
+    printf("printf    Long double 4: %.6Lf\n", (long double)111000000000011.11111);
+    res = ft_printf("ft_printf Long double 4: %.6Lf\n", 111000000000011.11111);
+    
+    printf("printf    Long double 5: %.3Lf and go on\n", (long double)00.0000000000385);
+    res = ft_printf("ft_printf Long double 5: %.3Lf and go on\n", 00.0000000000385);
+    
+    printf("printf    Long double 6: %3.6Lf\n", (long double)-240000000000.00385);
+    res = ft_printf("ft_printf Long double 6: %2.6Lf\n", -240000000000.00385);
+    
+    printf("printf    Long double 7: %12.4Lf\n", (long double)7710000000000.833);
+    res = ft_printf("ft_printf Long double 7: %12.4Lf\n", 7710000000000.833);
+    
+    printf("printf    Long double 9: %.7Lf\n", (long double)20000000000.7182818);
+    res = ft_printf("ft_printf Long double 9: %.7Lf\n", 20000000000.7182818);
+    
+    printf("printf    Long double 10: %5.0Lf\n", (long double)2.00000000007182818);
+    res = ft_printf("ft_printf Long double 10: %5.0Lf\n", 2.00000000007182818);
+    
+    printf("printf    Long double 11: %5.1Lf\n", (long double)20000000000.7182818);
+    res = ft_printf("ft_printf Long double 11: %5.1Lf\n", 20000000000.7182818);
+    
+    printf("printf    Long double 12: %7.2Lf\n", (long double)-7830000000000.234);
+    res = ft_printf("ft_printf Long double 12: %7.2Lf\n", -7830000000000.234);
+    
+    printf("printf    Long double 13: %12.4Lf\n", (long double)7830000000000.234);
+    res = ft_printf("ft_printf Long double 13: %12.4Lf\n", 7830000000000.234);
+    
+    printf("printf    Long double 14: %.0Lf\n", (long double)7830000000000.234);
+    res = ft_printf("ft_printf Long double 14: %.0Lf\n", 7830000000000.234);
+*/    
 	return (0);
 }
