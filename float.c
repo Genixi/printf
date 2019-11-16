@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/16 17:20:56 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/16 20:36:08 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,63 +29,92 @@ static int    get_base(double n, int *base_size)
 void ft_putnbr_f(double n, t_param *prm)
 {
 	int sign;
-    int int_float;
-	int fraction;
+    unsigned int int_part;
+	long fraction_part;
+	double tmp;
 	int precision;
 	int dot;
 	int base;
-	int base_size;
-    int tmp;
-    char *res;
+	int base_int;
+	int base_fraction;
+    int count;
+	char *res;
     char *str;
 	int i;
 	int j;
     
 	i = 0;
 	j = 0;
+	count = 0;
 	str = NULL;
 	res = NULL;
 	sign = (n < 0) ? 1 : 0;
-	int_float = (long)n;
+	if (sign)
+		n = -n;
+	int_part = (unsigned long)n;
 	precision = (prm->precision == -1) ? 6 : prm->precision;
-	fraction = int_float - n;
-	dot = (fraction == 0) ? 0 : 1;
-	if (fraction)
-		while (i < j)
+	tmp = n - (double)int_part;
+//	printf(" !!fraction_tmp: %f!! ", tmp);
+	dot = (tmp != 0 && precision > 0) ? 1 : 0;
+	if (tmp)
+	{
+		while (i < precision)
 		{
-			fraction *= 10;
+			tmp *= 10;
+			if (tmp < 1.0)
+				count++;
 			i++;
 		}
+	}
+	fraction_part = (long)(float)tmp;
+//	printf(" !!fraction_tmp: %f!! ", tmp);
+//	printf(" !!fraction: %ld!! \n", fraction_part);
 	
-	
-	base_size_int = 0;
-	base = get_base(n, &base_size_int) / 10;
-	base_size_fraction = 0;
-	if (fraction)
-		base += get_base_fraction(fraction, &base_size_fraction) / 10;
-	base_size_int = (base_size_int == 0) ? 1 : base_size_int;
+//	rounding integer part
+	if (!dot && n - (double)int_part >= 0.5)
+		int_part += 1;
 
+//	rounding fraction part
+	if (tmp - (double)fraction_part >= 0.5)
+		fraction_part += 1;
 	
-	if (prm->width > base_size_int + dot + base_ prm->precision + sign)
+//	printf(" !!dot: %d, intenger part: %d!! ", dot, int_part); 
+	
+	base_int = 0;
+	base_fraction = 0;
+	base = get_base(n, &base_int) / 10;
+	if (fraction_part)
+		base += get_base(fraction_part, &base_fraction) / 10;
+	base_int = (base_int == 0) ? 1 : base_int;
+
+	i = 0;
+//	printf(" !! prm->width: %d, width: %d\n", prm->width, base_int + dot + precision + sign);
+	if (prm->width > base_int + dot + precision + sign)
 	{
-//		printf("case 1\n");
-		if (!(str= (char*)malloc(sizeof(char) * (prm->width + 1))))
-			ft_error(1);
-		char_fill(str, prm->width + 1, ' ');
-		i = prm->width - (base_size + prm->precision + sign) - 1;
-		j = 0;
-		while (i + j < prm->width + 1)
+		while (i++ < prm->width - (base_int + dot + precision + sign))
+			ft_putchar(' ');
+		if (sign)
+			ft_putchar('-');
+		ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
+		if (precision > 0 && fraction_part)
 		{
-			str[i + j] = res[j];
-			j++;
+			ft_putchar('.');
+			ft_putstr(ft_itoa_base_ul(fraction_part, 10 ,0));
 		}
-		str[prm->width] = '\0';
-//		printf(" str: %s\n", str);
-		ft_putstr(str);
-//		free(str);
 	}
 	else
-		ft_putstr(res);
+	{
+		if (sign)
+			ft_putchar('-');
+		ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
+		if (precision > 0 && fraction_part)
+		{
+			ft_putchar('.');
+			while(count--)
+				ft_putchar('0');
+			ft_putstr(ft_itoa_base_ul(fraction_part, 10, 0));
+		}
+	}
 //!!!! почему то при очисте памяти происходит некорректный вывод - разобраться!!
 //	free(res);
 //	ft_putstr(res);

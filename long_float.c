@@ -6,13 +6,13 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:41:15 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/16 17:20:54 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/16 20:38:11 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
-static int    get_base_l(long double n, int *base_size)
+static int    get_base(long double n, int *base_size)
 {
     int base;
     
@@ -26,13 +26,18 @@ static int    get_base_l(long double n, int *base_size)
     return (base);
 }
 
-void    ft_putnbr_lf(long double n, t_param *prm)
+void ft_putnbr_lf(long double n, t_param *prm)
 {
     int sign;
+    unsigned long int_part;
+    long int fraction_part;
+    long double tmp;
+    int precision;
+    int dot;
     int base;
-    int base_size;
-    int tmp;
-    int width;
+    int base_int;
+    int base_fraction;
+    int count;
     char *res;
     char *str;
     int i;
@@ -40,66 +45,76 @@ void    ft_putnbr_lf(long double n, t_param *prm)
     
     i = 0;
     j = 0;
+    count = 0;
     str = NULL;
     res = NULL;
-    base_size = 0;
-    base = get_base_l(n, &base_size) / 10;
-    sign = 0;
-    if (n < 0)
-    {
-        sign = 1;
-        n = -n;
-    }
-    base_size = (base_size == 0) ? 1 : base_size;
-    width = prm->precision;
-    if (!(res = (char*)malloc(sizeof(char) * (base_size + width + sign + 1))))
-        ft_error(1);
-    char_fill(res, base_size + width + sign + 1, '0');
-    res[base + width + sign] = '\0';
+    sign = (n < 0) ? 1 : 0;
     if (sign)
-        res[i++] = '-';
-    if (base)
-        while ((long)n != 0)
+        n = -n;
+    int_part = (unsigned long)n;
+    precision = (prm->precision == -1) ? 6 : prm->precision;
+    tmp = n - (long double)int_part;
+    printf(" !!int_part: %ld, fraction_tmp: %Lf!! ", int_part, tmp);
+    dot = (tmp != 0 && precision > 0) ? 1 : 0;
+    if (tmp)
+    {
+        while (i < precision)
         {
-            res[i] = (char)(n / base + '0');
-            n = n - (int)(n / base) * base;
-            base = base / 10;
+            tmp *= 10;
+            if (tmp < 1.0)
+                count++;
             i++;
         }
-    else
-        res[i++] = '0';
-    res[i] = '.';
-    i++;
-    n = n * 10;
-    //     printf("res 0: %s ", res);
-    while (i < base_size +  width + sign + 1)
-    {
-        tmp = (int)n;
-        res[i] = (char)(tmp + '0');
-        n = (n - tmp) * 10;
-        i++;
     }
-    //    printf("res 1: %s ", res);
-    if (prm->width > base_size + width + sign)
+    fraction_part = (long)tmp;
+    printf(" !!fraction_tmp: %Lf!! ", tmp);
+    printf(" !!fraction: %lu!! \n", fraction_part);
+    
+    //    rounding integer part
+    if (!dot && n - (long double)int_part >= 0.5)
+        int_part += 1;
+    
+    //    rounding fraction part
+    if (tmp - (long double)fraction_part >= 0.5)
+        fraction_part += 1;
+    
+    //    printf(" !!dot: %d, intenger part: %d!! ", dot, int_part);
+    
+    base_int = 0;
+    base_fraction = 0;
+    base = get_base(n, &base_int) / 10;
+    if (fraction_part)
+        base += get_base(fraction_part, &base_fraction) / 10;
+    base_int = (base_int == 0) ? 1 : base_int;
+    
+    i = 0;
+    //    printf(" !! prm->width: %d, width: %d\n", prm->width, base_int + dot + precision + sign);
+    if (prm->width > base_int + dot + precision + sign)
     {
-        //        printf("case 1\n");
-        if (!(str= (char*)malloc(sizeof(char) * (prm->width + 1))))
-            ft_error(1);
-        char_fill(str, prm->width + 1, ' ');
-        i = prm->width - (base_size + width + sign) - 1;
-        j = 0;
-        while (i + j < prm->width + 1)
+        while (i++ < prm->width - (base_int + dot + precision + sign))
+            ft_putchar(' ');
+        if (sign)
+            ft_putchar('-');
+        ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
+        if (precision > 0 && fraction_part)
         {
-            str[i + j] = res[j];
-            j++;
+            ft_putchar('.');
+            ft_putstr(ft_itoa_base_ul(fraction_part, 10 ,0));
         }
-        str[prm->width] = '\0';
-        //        printf(" str: %s\n", str);
-        ft_putstr(str);
-        //        free(str);
     }
     else
-        ft_putstr(res);
+    {
+        if (sign)
+            ft_putchar('-');
+        ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
+        if (precision > 0 && fraction_part)
+        {
+            ft_putchar('.');
+            while(count--)
+                ft_putchar('0');
+            ft_putstr(ft_itoa_base_ul(fraction_part, 10, 0));
+        }
+    }
     //!!!! почему то при очисте памяти происходит некорректный вывод - разобраться!!
     //    free(res);
     //    ft_putstr(res);

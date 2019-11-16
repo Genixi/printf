@@ -554,6 +554,7 @@ int main() {
 
 */
 
+
     printf("\n----------------------------------------------------------------\n");
 	printf("float, double\n");
 
@@ -573,7 +574,7 @@ int main() {
 	res = ft_printf("ft_printf double 5: %.3f and go on\n", 00.385);
 	
 	printf("printf    double 6: %3.6f\n", 24.00385);
-	res = ft_printf("ft_printf double 6: %2.6f\n", 24.00385);
+	res = ft_printf("ft_printf double 6: %3.6f\n", 24.00385);
 
 	printf("printf    double 7: %12.4f\n", 771.833);
 	res = ft_printf("ft_printf double 7: %12.4f\n", 771.833);
@@ -598,22 +599,28 @@ int main() {
     
     printf("printf    double 15: %.0f\n", 783.734);
     res = ft_printf("ft_printf double 15: %.0f\n", 783.734);
+
+    printf("printf    double 16: %.18f\n", 783.73334);
+    res = ft_printf("ft_printf double 16: %.18f\n", 783.73334);
     
-    printf("printf    double 16: %.20f\n", 783.73334);
-    res = ft_printf("ft_printf double 16: %.20f\n", 783.73334);
+    printf("printf    double 17: %.19f\n", -0.837333554);
+    res = ft_printf("ft_printf double 17: %.19f\n", -0.837333554);
     
-    printf("printf    double 17: %.20f\n", -0.837333554);
-    res = ft_printf("ft_printf double 17: %.20f\n", -0.7333554);
-    
-    printf("printf    double 18: %.20f\n", 783.73334);
-    res = ft_printf("ft_printf double 18: %.20f\n", 783.73334);
+    printf("printf    double 18: %.19f\n", 783.73334);
+    res = ft_printf("ft_printf double 18: %.19f\n", 783.73334);
     
     printf("printf    double 19: %f\n", -0.837333554);
-    res = ft_printf("ft_printf double 19: %f\n", -0.7333554);
+    res = ft_printf("ft_printf double 19: %f\n", -0.837333554);
     
     printf("printf    double 20: %f\n", 783.73334);
     res = ft_printf("ft_printf double 20: %f\n", 783.73334);
- /*
+    
+    printf("printf    double 21: %30f\n", 783.73334);
+    res = ft_printf("ft_printf double 21: %30f\n", 783.73334);
+    
+    printf("printf    double 22: %30f\n", -783.73334);
+    res = ft_printf("ft_printf double 22: %30f\n", -783.73334);
+
     printf("printf    long double 1: %.5lf and go on\n", 771.83335);
     res = ft_printf("ft_printf long double 1: %.5lf and go on\n", 771.83335);
     
@@ -691,6 +698,6 @@ int main() {
     
     printf("printf    Long double 14: %.0Lf\n", (long double)7830000000000.234);
     res = ft_printf("ft_printf Long double 14: %.0Lf\n", 7830000000000.234);
-*/    
+    
 	return (0);
 }
