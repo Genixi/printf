@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:58:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/14 19:06:34 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:16:49 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 int main() {
 	int res;
+    
+    res = 0;
+    printf("flag 0: %015.5f\n", -123.1);
+    printf("flag 0: %015.5f\n", 123.1);
+    printf("flag 0: %015.5f\n", -123.1);
+	printf("flag 0: %015f\n", 123.1);
+	printf("flag 0: %015f\n", -123.1);
 /*
 	printf("\ninteger\n");
 	printf("printf    int 1: %d and go ahead\n", 21);
@@ -552,8 +559,6 @@ int main() {
     printf("printf    string 9: %30.5s and go ahead\n", "Test _strinG G G G G G");
     res = ft_printf("ft_printf string 9: %30.5s and go ahead\n", "Test _strinG G G G G G");
 
-*/
-
 
     printf("\n----------------------------------------------------------------\n");
 	printf("float, double\n");
@@ -660,10 +665,10 @@ int main() {
     printf("printf    long double 14: %.0lf\n", 7800000000003.234);
     res = ft_printf("ft_printf long double 14: %.0lf\n", 7800000000003.234);
     
-    printf("printf    Long double 1: %.5Lf and go on\n", (long double)7000000000071.83335);
+    printf("printf    Long double 1: %.5Lf and go on\n", (double long)7000000000071.83335);
     res = ft_printf("ft_printf Long double 1: %.5Lf and go on\n", 7000000000071.83335);
     
-    printf("printf    Long double 2: %9.3Lf and go on\n", (long double)-7000000000083.234);
+    printf("printf    Long double 2: %9.3Lf and go on\n", (double long)-7000000000083.234);
     res = ft_printf("ft_printf Long double 2: %9.3Lf and go on\n", -7000000000083.234);
     
     printf("printf    Long double 3: %.2Lf\n", (long double)0.0000000000385);
@@ -698,6 +703,7 @@ int main() {
     
     printf("printf    Long double 14: %.0Lf\n", (long double)7830000000000.234);
     res = ft_printf("ft_printf Long double 14: %.0Lf\n", 7830000000000.234);
-    
+ */
+		
 	return (0);
 }

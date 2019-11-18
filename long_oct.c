@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:44:52 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 15:12:17 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:28:40 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@
 void    ft_putnbr_lo(unsigned long int n, t_param *prm)
 {
     int size;
-    int i;
+    int space;
+	int i;
     int j;
     int width;
-    char* str;
+    char c_fill;
+	char* str;
     char* nbr_str;
     
-    size = ft_strlen(ft_itoa_base_ul(n, 8, 0));
-    nbr_str = NULL;
+    c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	size = ft_strlen(ft_itoa_base_ul(n, 8, 0));
+    space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
+	nbr_str = NULL;
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
 //  printf(" width: %d, size: %d ", width, size); 
 	if (width > size)
@@ -33,15 +37,16 @@ void    ft_putnbr_lo(unsigned long int n, t_param *prm)
 		if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
 			ft_error(1);
         if (prm->width >= prm->precision)
-            char_fill(str, width + 1, ' ');
+            char_fill(str, width + 1, c_fill);
         else
             char_fill(str, width + 1, '0');
         nbr_str = ft_itoa_base_ul(n, 8, 0);
         //обработать если itoa вернет  NULL
-        i = width - size;
-//		printf("i: %d\n", i);
+        i = 0;
+		if (prm->flag != '-' && prm->flag_2 != '-')
+			i = width - size;
         j = 0;
-        while (i + j < width + 1)
+        while (nbr_str[j] && i + j < width + 1)
         {
             str[i + j] = nbr_str[j];
             j++;
@@ -49,7 +54,9 @@ void    ft_putnbr_lo(unsigned long int n, t_param *prm)
     }
     else
 		str = ft_itoa_base_ul(n, 8, 0);
-    ft_putstr(str);
+    if (space)
+		ft_putchar(' ');
+	ft_putstr(str);
     free(str);
     free(nbr_str);
 }

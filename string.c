@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:39:34 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/11 18:51:42 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 16:15:11 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,27 @@ void ft_put_str(char *s, t_param *prm)
 {
 	int size;
 	int width;
+	int space;
 	int i;
 	int j;
 	char *str;
 
 	i = 0;
 	j = 0;
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
 	size = ft_strlen(s);
 	width = -1;
+	
+	if (space)
+		ft_putchar(' ');
+	
+	if (prm->precision > 0 && (prm->flag == '-' || prm->flag_2 == '-'))
+	{
+		while (s[i] && i < prm->precision)
+			ft_putchar(s[i++]);
+		return ;
+	}
+	
 	if (prm->width > size)
 		width = prm->width;
 	else if (prm->precision > 0 && prm->precision < size)

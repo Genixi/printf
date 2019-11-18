@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/16 20:36:08 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:55:12 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ static int    get_base(double n, int *base_size)
 void ft_putnbr_f(double n, t_param *prm)
 {
 	int sign;
-    unsigned int int_part;
+    unsigned long int_part;
 	long fraction_part;
 	double tmp;
 	int precision;
+	int space;
 	int dot;
 	int base;
 	int base_int;
@@ -40,6 +41,7 @@ void ft_putnbr_f(double n, t_param *prm)
     int count;
 	char *res;
     char *str;
+	char c_fill;
 	int i;
 	int j;
     
@@ -49,6 +51,8 @@ void ft_putnbr_f(double n, t_param *prm)
 	str = NULL;
 	res = NULL;
 	sign = (n < 0) ? 1 : 0;
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
+	c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
 	if (sign)
 		n = -n;
 	int_part = (unsigned long)n;
@@ -89,12 +93,17 @@ void ft_putnbr_f(double n, t_param *prm)
 
 	i = 0;
 //	printf(" !! prm->width: %d, width: %d\n", prm->width, base_int + dot + precision + sign);
-	if (prm->width > base_int + dot + precision + sign)
+	if (prm->width > base_int + dot + precision + sign + space)
 	{
 		while (i++ < prm->width - (base_int + dot + precision + sign))
-			ft_putchar(' ');
+			if (prm->flag != '-' && prm->flag_2!= '-')
+				ft_putchar(c_fill);
+		if (space)
+		   ft_putchar(' ');
 		if (sign)
 			ft_putchar('-');
+		else if (prm->flag == '+' || prm->flag_2 == '+')
+			ft_putchar('+');
 		ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
 		if (precision > 0 && fraction_part)
 		{
@@ -104,8 +113,12 @@ void ft_putnbr_f(double n, t_param *prm)
 	}
 	else
 	{
+		if (space)
+		   ft_putchar(' ');
 		if (sign)
 			ft_putchar('-');
+		else if (prm->flag == '+' || prm->flag_2 == '+')
+			ft_putchar('+');
 		ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
 		if (precision > 0 && fraction_part)
 		{

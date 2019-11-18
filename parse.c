@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/14 15:02:35 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 15:19:44 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,23 @@ int ft_prm_parse(char *str, t_param *prm)
 
 //	printf(" !!case parse!! ");
 	i = 0;
+
+/*
+**parse %
+*/
+	if (str[i] == '%')
+	{
+		prm->type = '%';
+		return (1);
+	}
+	
 /*
 ** parse flags
 */
 	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
 		prm->flag = str[i++];
+	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
+		prm->flag_2 = str[i++];
 /*
 ** parse width
 */
@@ -90,6 +102,7 @@ int ft_prm_parse(char *str, t_param *prm)
 		prm->type = str[i++];
 	if (!i)
 		ft_error(2);
+
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:41:15 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/16 20:38:11 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:22:05 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ static int    get_base(long double n, int *base_size)
 void ft_putnbr_lf(long double n, t_param *prm)
 {
     int sign;
-    unsigned long int_part;
-    long int fraction_part;
+    int space;
+	unsigned long int_part;
+    long fraction_part;
     long double tmp;
     int precision;
     int dot;
@@ -38,7 +39,8 @@ void ft_putnbr_lf(long double n, t_param *prm)
     int base_int;
     int base_fraction;
     int count;
-    char *res;
+    char c_fill;
+	char *res;
     char *str;
     int i;
     int j;
@@ -48,13 +50,15 @@ void ft_putnbr_lf(long double n, t_param *prm)
     count = 0;
     str = NULL;
     res = NULL;
-    sign = (n < 0) ? 1 : 0;
+    c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
+	sign = (n < 0) ? 1 : 0;
     if (sign)
         n = -n;
     int_part = (unsigned long)n;
     precision = (prm->precision == -1) ? 6 : prm->precision;
     tmp = n - (long double)int_part;
-    printf(" !!int_part: %ld, fraction_tmp: %Lf!! ", int_part, tmp);
+//  printf(" !!int_part: %ld, fraction_tmp: %Lf!! ", int_part, tmp);
     dot = (tmp != 0 && precision > 0) ? 1 : 0;
     if (tmp)
     {
@@ -67,8 +71,8 @@ void ft_putnbr_lf(long double n, t_param *prm)
         }
     }
     fraction_part = (long)tmp;
-    printf(" !!fraction_tmp: %Lf!! ", tmp);
-    printf(" !!fraction: %lu!! \n", fraction_part);
+//  printf(" !!fraction_tmp: %Lf!! ", tmp);
+//  printf(" !!fraction: %lu!! \n", fraction_part);
     
     //    rounding integer part
     if (!dot && n - (long double)int_part >= 0.5)
@@ -92,9 +96,14 @@ void ft_putnbr_lf(long double n, t_param *prm)
     if (prm->width > base_int + dot + precision + sign)
     {
         while (i++ < prm->width - (base_int + dot + precision + sign))
-            ft_putchar(' ');
-        if (sign)
+			if (prm->flag != '-' && prm->flag_2 != '-')
+				ft_putchar(c_fill);
+        if (space)
+			ft_putchar(' ');
+		if (sign)
             ft_putchar('-');
+		else if (prm->flag == '+' || prm->flag_2 == '+')
+			ft_putchar('+');
         ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
         if (precision > 0 && fraction_part)
         {
@@ -104,8 +113,12 @@ void ft_putnbr_lf(long double n, t_param *prm)
     }
     else
     {
-        if (sign)
+        if (space)
+			ft_putchar(' ');
+		if (sign)
             ft_putchar('-');
+		else if(prm->flag == '+' || prm->flag_2 == '+')
+			ft_putchar('+');
         ft_putstr(ft_itoa_base_ul(int_part, 10, 0));
         if (precision > 0 && fraction_part)
         {

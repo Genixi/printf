@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 17:06:48 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 20:20:34 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:40:19 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@
 void ft_putnbr_oct(unsigned int n, t_param *prm)
 {
     int size;
-    int i;
+    int space;
+	int i;
     int j;
     int width;
-    char* str;
+    char c_fill;
+	char* str;
     char* nbr_str;
     
     nbr_str = ft_itoa_base_u(n, 8, 0);
-    size = ft_strlen(nbr_str);
+    c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
+	size = ft_strlen(nbr_str);
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
 	if (width > size)
     {
@@ -40,14 +44,16 @@ void ft_putnbr_oct(unsigned int n, t_param *prm)
 		}
         width++;
 		if (prm->width >= prm->precision)
-            char_fill(str, width, ' ');
+            char_fill(str, width, c_fill);
         else
             char_fill(str, width, '0');
         if (prm->width > prm->precision && prm->precision > size)
 			char_fill(str + prm->width - prm->precision, prm->precision, '0');
 		str[width] = '\0';
 		//обработать если itoa вернет  NULL
-        i = width - size - 1;
+        i = 0;
+		if (prm->flag != '-' && prm->flag_2 != '-')
+			i = width - size - 1;
 		j = 0;
         while (i + j < width + 1)
         {
@@ -57,7 +63,9 @@ void ft_putnbr_oct(unsigned int n, t_param *prm)
     }
     else
         str = ft_itoa_base_u(n, 8, 0);
-    ft_putstr(str);
+    if (space)
+		ft_putchar(' ');
+	ft_putstr(str);
 //!!!почему то не фришиться сразу 2 указателя - разобраться!!
 	free(str);
 //	free(nbr_str);

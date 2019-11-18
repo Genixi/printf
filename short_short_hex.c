@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:36:32 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 17:01:03 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 17:49:30 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@
 void    ft_putnbr_hhx(unsigned char n, t_param *prm, int cap)
 {
     int    size;
-    int i;
+    int space;
+	int i;
     int j;
     int width;
-    char* str;
+    char c_fill;
+	char* str;
     char* nbr_str;
     
     nbr_str = NULL;
-    size = ft_strlen(ft_itoa_base_hu(n, 16, cap));
+    c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
+	size = ft_strlen(ft_itoa_base_hu(n, 16, cap));
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
     //    printf("check width: %d, sign: %d\n", width, sign);
     if (width > size)
@@ -34,15 +38,16 @@ void    ft_putnbr_hhx(unsigned char n, t_param *prm, int cap)
         if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
             ft_error(1);
         if (prm->width >= prm->precision)
-            char_fill(str, width + 1, ' ');
+            char_fill(str, width + 1, c_fill);
         else
             char_fill(str, width + 1, '0');
         //        printf("str: %s\n", str);
         nbr_str = ft_itoa_base_hhu(n, 16, cap);
         //        printf("nbr_str: %s\n", nbr_str);
         //обработать если itoa вернет  NULL
-        i = width - size;
-        //        printf("i: %d\n", i);
+        i = 0;
+        if (prm->flag != '-' && prm->flag_2 != '-')
+            i = width - size;
         j = 0;
         while (i + j < width + 1)
         {
@@ -53,7 +58,9 @@ void    ft_putnbr_hhx(unsigned char n, t_param *prm, int cap)
     }
     else
         str = ft_itoa_base_hhu(n, 16, cap);
-    ft_putstr(str);
+    if (space)
+		ft_putchar(' ');
+	ft_putstr(str);
     free(str);
     free(nbr_str);
 }

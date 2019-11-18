@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/16 19:40:03 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 13:59:17 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 typedef struct		s_param
 {
-    char			flag;
+ 	char			flag;
+	char			flag_2;
     int				width;
     int				precision;
     char			mod;
