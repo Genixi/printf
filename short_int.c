@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 char        *ft_itoa_base_hi(short int value, int base, int cap)

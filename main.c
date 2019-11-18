@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:58:54 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:16:49 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 23:26:32 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ int main() {
 	int res;
     
     res = 0;
-    printf("flag 0: %015.5f\n", -123.1);
-    printf("flag 0: %015.5f\n", 123.1);
-    printf("flag 0: %015.5f\n", -123.1);
-	printf("flag 0: %015f\n", 123.1);
-	printf("flag 0: %015f\n", -123.1);
+    printf("printf: %5c\n", 'Z');
+	res = ft_printf("ft_printf: %5c\n", "Z");
 /*
 	printf("\ninteger\n");
 	printf("printf    int 1: %d and go ahead\n", 21);

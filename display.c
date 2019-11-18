@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 

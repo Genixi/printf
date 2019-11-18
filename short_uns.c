@@ -6,13 +6,12 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 20:21:18 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:55:07 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 21:56:02 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 char        *ft_itoa_base_hu(unsigned short int value, int base, int cap)

@@ -6,12 +6,11 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:39:34 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 16:15:11 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 21:53:07 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 #include <stdio.h>
 void ft_put_str(char *s, t_param *prm)
 {
@@ -20,10 +19,12 @@ void ft_put_str(char *s, t_param *prm)
 	int space;
 	int i;
 	int j;
+	char c_fill;
 	char *str;
 
 	i = 0;
 	j = 0;
+	c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
 	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
 	size = ft_strlen(s);
 	width = -1;
@@ -46,7 +47,7 @@ void ft_put_str(char *s, t_param *prm)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (prm->width + 1))))
 			ft_error(1);
-		char_fill(str, prm->width + 1, ' ');
+		char_fill(str, prm->width + 1, c_fill);
 		str[prm->width] = '\0';
 		ft_putstr(str);
 		free(str);

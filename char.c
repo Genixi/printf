@@ -6,12 +6,11 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:36:42 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 16:16:23 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/19 00:05:17 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 
 void ft_put_char(char c, t_param *prm)
 {

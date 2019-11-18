@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 char        *ft_itoa_base_hhu(unsigned char value, int base, int cap)

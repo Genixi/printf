@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 void    ft_putnbr_ho(unsigned short int n, t_param *prm)

@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 void    ft_putnbr_hhi(signed char n, t_param *prm)

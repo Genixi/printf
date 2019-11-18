@@ -6,12 +6,11 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 15:15:40 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/15 17:18:10 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 21:55:57 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -50,28 +49,34 @@ char        *ft_itoa_base_u(unsigned int value, int base, int cap)
 void    ft_putnbr_u(unsigned int n, t_param *prm)
 {
 	int size;
+	int space;
 	int i;
     int j;
 	int width;
+	char c_fill;
 	char* str;
 	char* nbr_str;
 
 	size = get_num_len(n);
 	nbr_str = NULL;
+	c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
 	width = (prm->width >= prm->precision) ? prm->width : prm->precision;
 	if (width > size)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
 			ft_error(1);
 		if (prm->width >= prm->precision)
-			char_fill(str, width + 1, ' ');
+			char_fill(str, width + 1, c_fill);
 		else
 			char_fill(str, width + 1, '0');
 		if (prm->width > prm->precision && prm->precision > size)
 			char_fill(str + prm->width - prm->precision, prm->precision, '0');
 		nbr_str = ft_itoa_base_u(n, 10, 0);
 		//обработать если itoa вернет  NULL
-		i = width - size - 1;
+		i = 0;
+		if (prm->flag != '-' && prm->flag_2 != '-')
+			i = width - size - 1;
 		j = 0;
 		while (i + j < width + 1)
 		{
@@ -81,6 +86,8 @@ void    ft_putnbr_u(unsigned int n, t_param *prm)
 	}
 	else
 		str = ft_itoa_base_u(n, 10, 0);
+	if (space)
+		ft_putchar(' ');
 	ft_putstr(str);
 	free(str);
 	free(nbr_str);

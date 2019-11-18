@@ -6,13 +6,12 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:27:48 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:42:31 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 21:53:20 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 void    ft_putnbr_hx(unsigned short int n, t_param *prm, int cap)

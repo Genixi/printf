@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 13:59:17 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/18 22:41:58 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #define FT_PRINTF_PRINTF_H
 
 #include <stdarg.h>
-#include "libft.h"
-
-# define BUFF_SIZE	1024
+#include "libft/libft.h"
 
 typedef struct		s_param
 {
