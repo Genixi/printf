@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:48:26 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:41:43 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/19 22:27:13 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
     char* nbr_str;
     
 	nbr_str = ft_itoa_base_ul(n, 16, cap);
-    c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+    str = NULL;
+	c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
 	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
 	size = ft_strlen(nbr_str);
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
@@ -63,17 +64,15 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
         }
 		if (space)
 			ft_putchar(' ');
+		ft_putstr(str);
+		free(str);
     }
     else
 	{
 		if (space)
 			ft_putchar(' ');
 		ft_putstr("0x");
-		str = ft_itoa_base_ul(n, 16, cap);
+		ft_putstr(ft_itoa_base_ul(n, 16, cap));
 	}
-    ft_putstr(str);
-//!!!почему то не фришиться сразу 2 указателя - разобраться!!
-	free(str);
-//	free(nbr_str);
 }
 

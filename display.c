@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:08:23 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 15:19:28 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/19 22:12:21 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ void ft_display_str(va_list ap, t_param *prm)
 	char *str;
 
 	str = (char*)va_arg(ap, char*);
-	ft_put_str(str, prm);
+	if (str)
+		ft_put_str(str, prm);
+	else
+	{
+		ft_put_str_e(str, prm);
+	}
 }
 
 void ft_display_int(va_list ap, t_param *prm)
@@ -110,7 +115,7 @@ void ft_display(va_list ap, t_param *prm)
 	
 	s = prm->type;
 	if (s == '%')
-		ft_putchar('%');
+		ft_put_char('%', prm);
 	if (s == 'd' || s == 'i' || s == 'u' || s == 'x' || s == 'X' || s == 'o' || s == 'p')
 		ft_display_int(ap, prm);
 	else if (s == 'f')
@@ -119,6 +124,4 @@ void ft_display(va_list ap, t_param *prm)
 		ft_display_char(ap, prm);
 	else if (s == 's' || s == 'S')
 		ft_display_str(ap, prm);
-	else if (s == '%')
-		ft_putchar('%');
 }

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 15:19:44 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/19 21:08:50 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int ft_prm_parse(char *str, t_param *prm)
 /*
 **parse %
 */
-	if (str[i] == '%')
-	{
-		prm->type = '%';
-		return (1);
-	}
+//	if (str[i] == '%')
+//	{
+//		prm->type = '%';
+//		return (1);
+//	}
 	
 /*
 ** parse flags
