@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/19 21:08:50 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/21 21:48:50 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int ft_prm_parse(char *str, t_param *prm)
 		prm->flag = str[i++];
 	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
 		prm->flag_2 = str[i++];
+	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
+		prm->flag_3 = str[i++];
 /*
 ** parse width
 */
@@ -108,6 +110,8 @@ int ft_prm_parse(char *str, t_param *prm)
 void ft_prm_init(t_param *p)
 {
 	p->flag = 'Z';
+	p->flag_2 = 'Z';
+	p->flag_3 = 'Z';
 	p->width = -1;
 	p->precision = -1;
 	p->mod = 'Z';

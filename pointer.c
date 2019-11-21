@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:48:26 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/19 22:27:13 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/21 13:00:36 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
 	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
 	size = ft_strlen(nbr_str);
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
+//	printf("width: %d ", width);
 	if (width > size)
     {
         if (prm->precision > prm->width)
@@ -53,11 +54,19 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
         //!!!обработать если itoa вернет  NULL
         i = 0;
 		if (prm->flag != '-' && prm->flag_2 != '-')
+		{
+			str[width - size - 3] = '0';
+			str[width - size - 2] = 'x';
 			i = width - size - 1;
+		}
+		else
+		{
+			str[0] = '0';
+			str[1] = 'x';
+			i = 2;
+		}
 		j = 0;
-		str[width - size - 3] = '0';
-		str[width - size - 2] = 'x';
-		while (i + j < width + 1)
+		while (nbr_str[j] && str[i + j])
         {
             str[i + j] = nbr_str[j];
             j++;

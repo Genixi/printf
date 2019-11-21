@@ -2,6 +2,109 @@
 #include <stdio.h>
 int main(void)
 {
+	ft_printf("%hd\n", (short)(-32768));
+	printf("%hd\n", (short)(-32768));
+/*
+    ft_printf("ft:%0+8.5d\n", 34);
+	printf("pt:%0+8.5d\n", 34);
+    ft_printf("ft:%0+10.5d\n", -216);
+	printf("pt:%0+10.5d\n", -216);
+    ft_printf("ft:%0+8.5d\n", 0);
+    printf("pt:%0+8.5d\n", 0);
+    ft_printf("ft:%0+8.3d\n", 8375);
+    printf("pt:%0+8.3d\n", 8375);
+    ft_printf("ft:%0+8.3d\n", -8473);
+    printf("pt:%0+8.3d\n", -8473);
+    ft_printf("ft:%0+3.7d\n", 3267);
+    printf("pt:%0+3.7d\n", 3267);
+    ft_printf("ft:%0+3.7d\n", -2375);
+    printf("pt:%0+3.7d\n", -2375);
+    ft_printf("ft:%0+3.3d\n", 6983);
+	printf("pt:%0+3.3d\n", 6983);
+    ft_printf("ft:%0+3.3d\n", -8462);
+    printf("pt:%0+3.3d\n", -8462);
+
+	printf("ignored flags\n");
+
+	ft_printf("ft:%0+-8.5d\n", 34);
+    printf("pt:%0+-8.5d\n", 34);
+    ft_printf("ft:%0+-10.5d\n", -216);
+    printf("pt:%0+-10.5d\n", -216);
+    ft_printf("ft:%0+-8.5d\n", 0);
+    printf("pt:%0+-8.5d\n", 0);
+    ft_printf("ft:%0+-8.3d\n", 8375);
+    printf("pt:%0+-8.3d\n", 8375);
+    ft_printf("ft:%0+-8.3d\n", -8473);
+    printf("pt:%0+-8.3d\n", -8473);
+    ft_printf("ft:%0+-3.7d\n", 3267);
+    printf("pt:%0+-3.7d\n", 3267);
+    ft_printf("ft:%0+-3.7d\n", -2375);
+    printf("pt:%0+-3.7d\n", -2375);
+    ft_printf("ft:%0+-3.3d\n", 6983);
+    printf("pt:%0+-3.3d\n", 6983);
+    ft_printf("ft:%0+-3.3d\n", -8462);
+    printf("pt:%0+-3.3d\n", -8462);
+
+	printf("---------------------\n");
+
+    ft_printf("ft:%08.5d\n", 34);
+    printf("pt:%08.5d\n", 34);
+    ft_printf("ft:%010.5d\n", -216);
+    printf("pt:%010.5d\n", -216);
+    ft_printf("ft:%08.5d\n", 0);
+    printf("pt:%08.5d\n", 0);
+    ft_printf("ft:%08.3d\n", 8375);
+    printf("pt:%08.3d\n", 8375);
+    ft_printf("ft:%08.3d\n", -8473);
+    printf("pt:%08.3d\n", -8473);
+
+    ft_printf("ft:%-8.5d\n", 34);
+    printf("pt:%-8.5d\n", 34);
+    ft_printf("ft:%-10.5d\n", -216);
+    printf("pt:%-10.5d\n", -216);
+    ft_printf("ft:%-8.5d\n", 0);
+    printf("pt:%-8.5d\n", 0);
+    ft_printf("ft:%-3.7d\n", 3267);
+    printf("pt:%-3.7d\n", 3267);
+    ft_printf("ft:%-3.7d\n", -2375);
+	printf("pt:%-3.7d\n", -2375);
+    ft_printf("ft:%8.5d\n", 34);
+    printf("pt:%8.5d\n", 34);
+    ft_printf("ft:%10.5d\n", -216);
+    printf("pt:%10.5d\n", -216);
+    ft_printf("ft:%8.5d\n", 0);
+    printf("pt:%8.5d\n", 0);
+    ft_printf("ft:%07d\n", -54);
+	printf("pt:%07d\n", -54);
+	ft_printf("ft:%+07d\n", 54);
+	printf("pt:%+07d\n", 54);
+	ft_printf("ft1:%-7d\n", 33);
+	printf("pt1:%-7d\n", 33);
+	ft_printf("ft2:%-5d\n", -2562);
+	printf("pt2:%-5d\n", -2562);
+	ft_printf("ft3:%+5d\n", 35);
+	printf("pt3:%+5d\n", 35);
+	ft_printf("ft4:%+7d\n", 0);
+	printf("pt4:%+7d\n", 0);
+	ft_printf("ft5:%+24d\n", 2147483647);
+	printf("pt5:%+24d\n", 2147483647);
+	ft_printf("ft6:% 7d\n", 33);
+	printf("pt6:% 7d\n", 33);
+	printf("pt1:this %d number\n", 0);
+	ft_printf("ft1:this %d number\n", 0);
+	printf("pt2:this %i number\n", 0);
+	ft_printf("ft2:this %i number\n", 0);
+	printf("pt3:%d\n", 0);
+	ft_printf("ft3:%d\n", 0);
+	printf("pt4:%3d\n", 0);
+	ft_printf("ft4:%3d\n", 0);
+	printf("pt5:%-3d\n", 0);
+	ft_printf("ft5:%-3d\n", 0);
+	printf("pt6:%-7d\n", -14);
+	ft_printf("ft6:%-7d\n", -14);
+*/
+
+/*
 	static char	a01;
 	static unsigned char a02;
 	static short a03;
@@ -15,11 +118,16 @@ int main(void)
 	static char *a11;
 	static void *a12;
 
-	printf("%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
-	printf("%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
-	printf("%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	printf("test 1: %-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("test 1: %-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	printf("\n");
+	printf("test 2: %-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("test 2: %-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	printf("\n");
+	printf("test 3: %-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+	ft_printf("test 3: %-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
 
-/*	ft_printf("ft_printf:%%\n");
+	ft_printf("ft_printf:%%\n");
  	printf("printf   :%%\n");
 	ft_printf("ft_printf:%5%\n");
     printf("printf   :%5%\n");
