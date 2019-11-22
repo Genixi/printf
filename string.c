@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:39:34 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/19 21:37:40 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 14:10:13 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ft_put_str(char *s, t_param *prm)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (prm->width + 1))))
 			ft_error(1);
-		char_fill(str, prm->width + 1, c_fill);
+		char_fill(str, 0, prm->width + 1, c_fill, 1);
 		str[prm->width] = '\0';
 		i = 0;
 		while (i < prm->width + 1)
@@ -84,7 +84,7 @@ void ft_put_str(char *s, t_param *prm)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
 			ft_error(1);
-		char_fill(str, width + 1, c_fill);
+		char_fill(str, 0, width + 1, c_fill, 1);
 		str[width] = '\0';
 		if (prm->precision != -1 && prm->precision < size)
 			i = width - (prm->precision - 1) - 1;

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:48:26 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/21 13:00:36 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 14:13:31 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void ft_putnbr_ptr(unsigned long long int n, t_param *prm, int cap)
 		}
         width++;
 		if (prm->width >= prm->precision)
-            char_fill(str, width, c_fill);
+            char_fill(str, 0, width, c_fill, 1);
         else
-            char_fill(str, width, '0');
+            char_fill(str, 0, width, '0', 1);
 		if (prm->width > prm->precision && prm->precision > size)
-			char_fill(str + prm->width - prm->precision, prm->precision, '0');
+			char_fill(str, prm->width - prm->precision, prm->width, '0', 1);
 		str[width] = '\0';
         //!!!обработать если itoa вернет  NULL
         i = 0;

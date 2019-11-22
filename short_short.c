@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:15:42 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:46:11 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 14:17:49 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void    ft_putnbr_hhi(signed char n, t_param *prm)
             if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
                 ft_error(1);
         if (prm->width >= prm->precision)
-            char_fill(str, width + 1, c_fill);
+            char_fill(str, 0, width + 1, c_fill, 1);
         else
-            char_fill(str, width + 1, '0');
+            char_fill(str, 0, width + 1, '0', 1);
         //        printf("str: %s\n", str);
         nbr_str = (sign == 1) ? ft_itoa_base_hi(-n, 10, 0) : ft_itoa_base_hi(n, 10, 0);
         if (sign && prm->width < prm->precision)

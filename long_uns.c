@@ -36,9 +36,9 @@ void    ft_putnbr_lu(unsigned long int n, t_param *prm)
         if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
             ft_error(1);
         if (prm->width >= prm->precision)
-            char_fill(str, width + 1, c_fill);
+            char_fill(str, 0, width + 1, c_fill, 1);
         else
-            char_fill(str, width + 1, '0');
+            char_fill(str, 0, width + 1, '0', 1);
         nbr_str = ft_itoa_base_ul(n, 10, 0);
         //обработать если itoa вернет  NULL
         i = 0;

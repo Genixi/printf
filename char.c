@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:36:42 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/19 21:41:20 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 14:08:36 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void ft_put_char(char c, t_param *prm)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (prm->width + 1))))
 			ft_error(1);
-		char_fill(str, prm->width + 1, c_fill);
+		char_fill(str, 0, prm->width + 1, c_fill, 1);
 		if (prm->flag == '-' || prm->flag_2 == '-')
-			char_fill(str, prm->width + 1, ' ');
+			char_fill(str, 0, prm->width + 1, ' ', 1);
 		str[prm->width] = '\0';
 		if (prm->flag != '-' && prm->flag_2 != '-')
 			str[prm->width - 1] = c;

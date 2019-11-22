@@ -41,11 +41,11 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
 		}
         width++;
 		if (prm->width >= prm->precision)
-            char_fill(str, width, c_fill);
+            char_fill(str, 0, width, c_fill, 1);
         else
-			char_fill(str, width, '0');
+			char_fill(str, 0, width, '0', 1);
 		if (prm->width > prm->precision && prm->precision > size)
-			char_fill(str + prm->width - prm->precision, prm->precision, '0'); 
+			char_fill(str, prm->width - prm->precision, prm->width, '0', 1); 
 		str[width] = '\0';
         //!!!обработать если itoa вернет  NULL
         i = 0;
