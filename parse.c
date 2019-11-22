@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/21 21:48:50 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 20:52:19 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,29 @@ int ft_prm_parse(char *str, t_param *prm)
 		prm->flag_2 = str[i++];
 	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
 		prm->flag_3 = str[i++];
+	if (str[i] == '-' || str[i] == '+' || str[i] == ' ' || str[i] == '#' || str[i] == '0')
+	{
+		if (str[i] == '+')
+		{
+			if (prm->flag == ' ')
+				prm->flag = '+';
+			else if (prm->flag_2 == ' ')
+				prm->flag_2 = '+';
+			else if (prm->flag_3 == ' ')
+				prm->flag_3 = '+';
+		}
+		else if (str[i] == '-')
+		{
+			if (prm->flag == '0')
+				prm->flag = '-';
+			else if (prm->flag_2 == '0')
+				prm->flag_2 = '-';
+			else if (prm->flag_3 == '0')
+				prm->flag_3 = '-';
+		}
+		i++;
+	}
+	
 /*
 ** parse width
 */

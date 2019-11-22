@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:32:20 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/22 19:38:46 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/22 21:45:55 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void    ft_putnbr_i(int n, t_param *prm)
 				ft_error(1);
 			width++;
 		}
-		else if(space && head && prm->width > prm->precision && prm->width > size && size > prm->precision)
+//		else if(space && head && prm->width > prm->precision && prm->width > size && size > prm->precision)
+		else if(space && head && prm->width > prm->precision && prm->width > size)
 		{
 			if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
 				ft_error(1);
@@ -86,6 +87,8 @@ void    ft_putnbr_i(int n, t_param *prm)
 		}
 		else if(space && c_fill == '0' && prm->width > prm->precision && prm->width > size && size > prm->precision)
 		{
+			if (prm->precision != -1 && !sign)
+				width++;
 			if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
 				ft_error(1);
 			width += sign -1;
@@ -135,8 +138,6 @@ void    ft_putnbr_i(int n, t_param *prm)
 			i = prm->precision - size + sign;
 		j = 0;
 
-//		printf("nbr: %s", nbr_str);
-
 		while (nbr_str[j] && str[i + j])
 		{
 			str[i + j] = nbr_str[j];
@@ -164,5 +165,6 @@ void    ft_putnbr_i(int n, t_param *prm)
 		if (plus && n >= 0)
 			ft_putchar('+');
 		ft_putstr(ft_itoa_base(n, 10));
+		
 	}
 }

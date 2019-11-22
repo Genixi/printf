@@ -2,6 +2,69 @@
 #include <stdio.h>
 int main(void)
 {
+    ft_printf("ft1:%.0d\n", 0);
+    printf("pt1:%.0d\n", 0);
+    ft_printf("ft2:%.d\n", 0);
+    printf("pt2:%.d\n", 0);
+    ft_printf("ft3:%5.0d\n", 0);
+    printf("pt3:%5.0d\n", 0);
+    ft_printf("ft4:%5.d\n", 0);
+    printf("pt4:%5.d\n", 0);
+    ft_printf("ft5:%-5.0d\n", 0);
+    printf("pt5:%-5.0d\n", 0);
+    ft_printf("ft6:%-5.d\n", 0);
+    printf("pt6:%-5.d\n", 0);
+    ft_printf("ft7:%+.0d\n", 0);
+    printf("pt7:%+.0d\n", 0);
+    ft_printf("ft8:%+.d\n", 0);
+    printf("pt8:%+.d\n", 0);
+    ft_printf("ft9:%+5.0d\n", 0);
+    printf("pt9:%+5.0d\n", 0);
+    ft_printf("ft10:%+5.d\n", 0);
+    printf("pt10:%+5.d\n", 0);
+    ft_printf("ft11:%+-5.0d\n", 0);
+    printf("pt11:%+-5.0d\n", 0);
+    ft_printf("ft12:%+-5.d\n", 0);
+    printf("pt12:%+-5.d\n", 0);
+    
+    
+/*
+    ft_printf("% 0+-8.5d\n", 34);
+    printf("% 0+-8.5d\n", 34);
+    ft_printf("% 0+-10.5d\n", -216);
+    printf("% 0+-10.5d\n", -216);
+    ft_printf("% 0+-8.5d\n", 0);
+    printf("% 0+-8.5d\n", 0);
+    ft_printf("% 0+-8.3d\n", 8375);
+    printf("% 0+-8.3d\n", 8375);
+    ft_printf("% 0+-8.3d\n", -8473);
+    printf("% 0+-8.3d\n", -8473);
+    ft_printf("% 0+-3.7d\n", 3267);
+    printf("% 0+-3.7d\n", 3267);
+    ft_printf("% 0+-3.7d\n", -2375);
+    printf("% 0+-3.7d\n", -2375);
+    ft_printf("% 0+-3.3d\n", 6983);
+    printf("% 0+-3.3d\n", 6983);
+    ft_printf("% 0+-3.3d\n", -8462);
+    printf("% 0+-3.3d\n", -8462);    
+    
+
+    ft_printf("%037ld\n", 22337203685477l);
+    printf("%037ld\n", 22337203685477l);
+    ft_printf("%.37ld\n", -22337203685477l);
+    printf("%.37ld\n", -22337203685477l);
+    ft_printf("%37lld\n", 522337203685470ll);
+    printf("%37lld\n", 522337203685470ll);
+    ft_printf("%-37lld\n", -522337203685470ll);
+    printf("%-37lld\n", -522337203685470ll);
+    ft_printf("%+ld\n", 22337203685477l);
+    printf("%+ld\n", 22337203685477l);
+
+	ft_printf("% -8.5d\n", 34);
+    printf("% -8.5d\n", 34);
+    ft_printf("% -8.5d\n", 0);
+    printf("% -8.5d\n", 0);
+
     ft_printf("0:% -7d\n", -14);
     printf("0:% -7d\n", -14);
     ft_printf("1:% -5d\n", -2562);
@@ -28,8 +91,8 @@ int main(void)
     ft_printf("15!:% 08.3d\n", -8473);
     printf("15!:% 08.3d\n", -8473);
  	
-	ft_printf("8:% -8.5d\n", 0);   
- 	printf("8:% -8.5d\n", 0);
+	ft_printf("8!:% -8.5d\n", 0);
+ 	printf("8!:% -8.5d\n", 0);
 
     ft_printf("2:% -7d\n", 33);
     printf("2:% -7d\n", 33);
@@ -39,8 +102,8 @@ int main(void)
     printf("4!:% 05d\n", 43);
     ft_printf("5!:% 03d\n", 0);
     printf("5!:% 03d\n", 0);
-    ft_printf("7:% -8.5d\n", 34);
-    printf("7:% -8.5d\n", 34);
+    ft_printf("7!:% -8.5d\n", 34);
+    printf("7!:% -8.5d\n", 34);
     ft_printf("8:% -8.3d\n", -8473);
     printf("8:% -8.3d\n", -8473);
     ft_printf("9:% +-8.3d\n", 8375);
@@ -50,7 +113,6 @@ int main(void)
     
     ft_printf("12:% 010.5d\n", -216);
     printf("12:% 010.5d\n", -216);
-    
     
     ft_printf("16:% 03.7d\n", 3267);
     printf("16:% 03.7d\n", 3267);
@@ -178,8 +240,7 @@ int main(void)
 	ft_printf("ft5:%-3d\n", 0);
 	printf("pt6:%-7d\n", -14);
 	ft_printf("ft6:%-7d\n", -14);
-
-
+*/
 /*
 	static char	a01;
 	static unsigned char a02;

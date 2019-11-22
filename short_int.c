@@ -80,8 +80,8 @@ void    ft_putnbr_hi(short int n, t_param *prm)
     //        sign = 1;
     
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
-//  printf("number: %hd, mod: %c, type: %c ", n, prm->mod, prm->type);
-//  printf(" width: %d, sign: %d, size: %d, c_fill: %c printf: ", width, sign, size, c_fill);
+    //    printf("flag: %c, flag_2: %c ", prm->flag, prm->flag_2);
+    //    printf(" width: %d, sign: %d, size: %d, c_fill: %c printf: ", width, sign, size, c_fill);
     if (width > size)
     {
         if (sign && prm->precision > prm->width)
@@ -90,17 +90,20 @@ void    ft_putnbr_hi(short int n, t_param *prm)
                 ft_error(1);
             width++;
         }
-        else if(space && head && prm->width > prm->precision && prm->width > size && size > prm->precision)
+        //        else if(space && head && prm->width > prm->precision && prm->width > size && size > prm->precision)
+        else if(space && head && prm->width > prm->precision && prm->width > size)
         {
-            if (!(str = (char*)malloc(sizeof(char) * width)))
+            if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
                 ft_error(1);
-            width--;
+            width += sign - 1;
         }
         else if(space && c_fill == '0' && prm->width > prm->precision && prm->width > size && size > prm->precision)
         {
-            if (!(str = (char*)malloc(sizeof(char) * width)))
+            if (prm->precision != -1 && !sign)
+                width++;
+            if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
                 ft_error(1);
-            width--;
+            width += sign -1;
         }
         else
             if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
@@ -109,6 +112,7 @@ void    ft_putnbr_hi(short int n, t_param *prm)
         //
         
         char_fill(str, 0, width + 1, ' ', 1);
+        
         if (prm->width > prm->precision && prm->precision > size && !head)
             char_fill(str, prm->width - prm->precision, prm->width + 1, '0', 1);
         else if (prm->width > prm->precision && prm->precision > size && head)
@@ -118,8 +122,10 @@ void    ft_putnbr_hi(short int n, t_param *prm)
         else if (prm->width < prm->precision && prm->precision > size)
             char_fill(str, 0, width + 1, '0', 1);
         
+        //        printf("str: %s\n", str);
+        //        printf("width_0: %zu", ft_strlen(str));
         nbr_str = (n < 0) ? ft_itoa_base_hi(-n, 10, 0) : ft_itoa_base_hi(n, 10, 0);
-		if (head && sign)
+        if (head && sign)
             str[0] = (n < 0) ? '-' : '+';
         //        else if (head && space)
         //            str[0] = (n < 0) ? '-' : ' ';
@@ -152,9 +158,10 @@ void    ft_putnbr_hi(short int n, t_param *prm)
             j++;
         }
         // мы не ставим пробел из-за флага space если пробелы уже стоят из-за других причин
-        if (space && n >= 0 && !plus)
-            if ((i > 0 && str[i - 1] != ' ') || i == 0)
-                ft_putchar(' ');
+        if (space && n >= 0 && !plus && str[0] != ' ')
+            ft_putchar(' ');
+        //            if (((i > 0 && str[i - 1] != ' ') || i == 0))
+        //                ft_putchar(' ');
         
         //        printf("width_end: %zu", ft_strlen(str));
         //        if (space && !sign &&)
