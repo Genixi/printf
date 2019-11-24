@@ -2,7 +2,98 @@
 #include <stdio.h>
 int main(void)
 {
-    ft_printf("ft1:%.0d\n", 0);
+/*  ft_printf("6:%.0o\n", 0);
+    printf("6:%.0o\n", 0);
+    ft_printf("7:%.o\n", 0);
+    printf("7:%.o\n", 0);
+   
+   	ft_printf("8:%5.0o\n", 0);
+    printf("8:%5.0o\n", 0);
+   
+   	ft_printf("9:%5.o\n", 0);
+    printf("9:%5.o\n", 0);
+    ft_printf("10:%-5.0o\n", 0);
+    printf("10:%-5.0o\n", 0);
+    ft_printf("11:%-5.o\n", 0);
+    printf("11:%-5.o\n", 0);
+  */
+    ft_printf("ft1:this %#o number\n", 0);
+    printf("pt1:this %#o number\n", 0);
+    ft_printf("ft2:%#3o\n", 0);
+    printf("pt2:%#3o\n", 0);
+    ft_printf("ft3:%#-3o\n", 0);
+    printf("ft3:%#-3o\n", 0);
+    
+	ft_printf("ft12:%#.0o\n", 0);
+    printf("pt12:%#.0o\n", 0);
+    ft_printf("ft13:%#.o\n", 0);
+    printf("pt13:%#.o\n", 0);
+/*    ft_printf("14:%#5.0o\n", 0);
+    printf("14:%#5.0o\n", 0);
+    ft_printf("15:%#5.o\n", 0);
+    printf("15:%#5.o\n", 0);
+    ft_printf("16:%#-5.0o\n", 0);
+    printf("16:%#-5.0o\n", 0);
+    ft_printf("17:%#-5.o\n", 0);
+    printf("17:%#-5.o\n", 0);
+*/
+/*
+    ft_printf("1:%#8.5o\n", 34);
+    printf("1:%#8.5o\n", 34);
+    ft_printf("2:%#-8.5o\n", 34);
+    printf("2:%#-8.5o\n", 34);
+    ft_printf("3:%#-2.7o\n", 3267);
+    printf("3:%#-2.7o\n", 3267);
+    ft_printf("4:%#08.5o\n", 34);
+    printf("4:%#08.5o\n", 34);
+    ft_printf("5:%#0-8.5o\n", 34);
+    printf("5:%#0-8.5o\n", 34);
+    ft_printf("6:%#0-2.7o\n", 3267);
+    printf("6:%#0-2.7o\n", 3267);
+*/
+    
+/*
+// 	ft_printf("ft:this %#o number\n", 0);
+//	printf("pt:this %#o number\n", 0);
+//	ft_printf("ft:%#3o\n", 0);
+//	printf("pt:%#3o\n", 0);
+	ft_printf("ft:%#-7o\n", 33);
+	printf("pt:%#-7o\n", 33);
+	ft_printf("ft:%#.5o\n", 21);
+	printf("pt:%#.5o\n", 21);
+	ft_printf("ft:%#.3o\n", 0);
+	printf("pt:%#.3o\n", 0);
+
+    ft_printf("this %#o number\n", 17);
+    printf("this %#o number\n", 17);
+    ft_printf("%#o\n", 3);
+    printf("%#o\n", 3);
+    ft_printf("%#o\n", 4294967295u);
+    printf("%#o\n", 4294967295u);
+    ft_printf("%#7o\n", 33);
+    printf("%#7o\n", 33);
+	ft_printf("%#3o\n", 0);
+  	printf("%#3o\n", 0);
+*/    
+    
+ /*   ft_printf("%6o\n", 52625);
+    printf("%6o\n", 52625);
+    ft_printf("%.5o\n", 5263);
+    printf("%.5o\n", 5263);
+    ft_printf("%07o\n", 698334);
+    printf("%07o\n", 698334);
+    ft_printf("%8.3o\n", 8375);
+    printf("%8.3o\n", 8375);
+    ft_printf("%08.3o\n", 8375);
+    printf("%08.3o\n", 8375);
+	ft_printf("%037lo\n", 22337203685477ul);
+	printf("%037lo\n", 22337203685477ul);
+	ft_printf("%37llo\n", 522337203685470ull);
+	printf("%37llo\n", 522337203685470ull);   
+*/
+
+/*
+ 	ft_printf("ft1:%.0d\n", 0);
     printf("pt1:%.0d\n", 0);
     ft_printf("ft2:%.d\n", 0);
     printf("pt2:%.d\n", 0);
@@ -18,15 +109,15 @@ int main(void)
     printf("pt7:%+.0d\n", 0);
     ft_printf("ft8:%+.d\n", 0);
     printf("pt8:%+.d\n", 0);
-    ft_printf("ft9:%+5.0d\n", 0);
+	ft_printf("ft9:%+5.0d\n", 0);
     printf("pt9:%+5.0d\n", 0);
     ft_printf("ft10:%+5.d\n", 0);
     printf("pt10:%+5.d\n", 0);
-    ft_printf("ft11:%+-5.0d\n", 0);
-    printf("pt11:%+-5.0d\n", 0);
-    ft_printf("ft12:%+-5.d\n", 0);
-    printf("pt12:%+-5.d\n", 0);
-    
+	ft_printf("ft11:%+-5.0d\n", 0);
+	printf("pt11:%+-5.0d\n", 0);
+	ft_printf("ft12:%+-5.d\n", 0);
+	printf("pt12:%+-5.d\n", 0);
+ */  
     
 /*
     ft_printf("% 0+-8.5d\n", 34);

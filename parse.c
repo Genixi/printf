@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/22 20:52:19 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/24 15:47:27 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,18 +95,23 @@ int ft_prm_parse(char *str, t_param *prm)
 		j = 0;
 		while (str[i + j] >= '0' && str[i + j] <= '9')
 			j++;
-		if (!(s_prec = (char*)malloc(sizeof(char) * j)))
-			ft_error(1);
-		s_prec[j] = '\0';
-		j = 0;
-		while (str[i + j] >= '0' && str[i + j] <= '9')
+		if (!j)
+			prm->precision = 0;
+		else 
 		{
-			s_prec[j] = str[j + i];
-			j++;
+			if (!(s_prec = (char*)malloc(sizeof(char) * j)))
+				ft_error(1);
+			s_prec[j] = '\0';
+			j = 0;
+			while (str[i + j] >= '0' && str[i + j] <= '9')
+			{
+				s_prec[j] = str[j + i];
+				j++;
+			}
+			i += j;
+			prm->precision = ft_atoi(s_prec);
+			free(s_prec);
 		}
-		i += j;
-		prm->precision = ft_atoi(s_prec);
-		free(s_prec);
 	}
 /*
 ** parse modificator

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:32:20 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/22 21:45:55 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/24 16:02:15 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,10 @@ void    ft_putnbr_i(int n, t_param *prm)
 		nbr_str = (n < 0) ? ft_itoa_base(-n, 10) : ft_itoa_base(n, 10);
 		if (head && sign)			
 			str[0] = (n < 0) ? '-' : '+';
-//		else if (head && space)
-//			str[0] = (n < 0) ? '-' : ' ';
 		else if (!head && sign && prm->width < prm->precision)
 			str[0] = (n < 0) ? '-' : '+';
+		else if (!head && sign && prm->width >= prm->precision && prm->precision == 0 && !n)
+			str[ft_strlen(str) - 1] = '+';
 		else if (!head && sign && prm->width >= prm->precision && prm->precision <= size)
 		{
 			if (c_fill == '0' && prm->precision == -1)
@@ -130,7 +130,7 @@ void    ft_putnbr_i(int n, t_param *prm)
 		{
 			str[prm->width - prm->precision - 1] = (n < 0) ? '-' : '+';
 		}
-		
+
 		i = (str[0] == '-' || str[0] == '+') ? 1 : 0;
 		if (!head)
 			i = width + sign - size - 1 * sign;
@@ -140,31 +140,31 @@ void    ft_putnbr_i(int n, t_param *prm)
 
 		while (nbr_str[j] && str[i + j])
 		{
-			str[i + j] = nbr_str[j];
+			//нули с нулевой точностью не выводяться
+			if (!(!n && prm->precision == 0))
+				str[i + j] = nbr_str[j];
 			j++;
 		}
 // мы не ставим пробел из-за флага space если пробелы уже стоят из-за других причин
 		if (space && n >= 0 && !plus && str[0] != ' ')
 			ft_putchar(' ');
-//			if (((i > 0 && str[i - 1] != ' ') || i == 0))
-//				ft_putchar(' ');
-
-//		printf("width_end: %zu", ft_strlen(str));
-//		if (space && !sign &&)
-//			ft_putchar(' ');
-		//чистить за собой nbr_str, т.к. он не нужен
 		ft_putstr(str);
-//		printf("%s", str);
 		free(str);
-//		free(nbr_str);
 	}
 	else
 	{
-		if (space && !sign)
-			ft_putchar(' ');
-		if (plus && n >= 0)
-			ft_putchar('+');
-		ft_putstr(ft_itoa_base(n, 10));
-		
+		if (!n && prm->precision == 0)
+		{
+			if (sign)
+				ft_putchar('+');
+		}
+		else
+		{
+			if (space && !sign)
+				ft_putchar(' ');
+			if (plus && n >= 0)
+				ft_putchar('+');
+			ft_putstr(ft_itoa_base(n, 10));
+		}		
 	}
 }
