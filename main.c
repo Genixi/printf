@@ -2,6 +2,9 @@
 #include <stdio.h>
 int main(void)
 {
+    ft_printf("this %#x number\n", 17);
+    printf("this %#x number\n", 17);
+	printf("this %x number\n", 17);
 /*  ft_printf("6:%.0o\n", 0);
     printf("6:%.0o\n", 0);
     ft_printf("7:%.o\n", 0);
@@ -16,7 +19,7 @@ int main(void)
     printf("10:%-5.0o\n", 0);
     ft_printf("11:%-5.o\n", 0);
     printf("11:%-5.o\n", 0);
-  */
+
     ft_printf("ft1:this %#o number\n", 0);
     printf("pt1:this %#o number\n", 0);
     ft_printf("ft2:%#3o\n", 0);
@@ -28,7 +31,7 @@ int main(void)
     printf("pt12:%#.0o\n", 0);
     ft_printf("ft13:%#.o\n", 0);
     printf("pt13:%#.o\n", 0);
-/*    ft_printf("14:%#5.0o\n", 0);
+    ft_printf("14:%#5.0o\n", 0);
     printf("14:%#5.0o\n", 0);
     ft_printf("15:%#5.o\n", 0);
     printf("15:%#5.o\n", 0);
