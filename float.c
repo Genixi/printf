@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/18 17:55:12 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/25 20:47:21 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,12 @@ void ft_putnbr_f(double n, t_param *prm)
 	res = NULL;
 	sign = (n < 0) ? 1 : 0;
 	space = (prm->flag == ' ' || prm->flag_2 == ' ') ? 1 : 0;
-	c_fill = (prm->flag == '0' || prm->flag_2 == '0') ? '0' : ' ';
+	c_fill = (prm->flag == '0' || prm->flag_2 == '0' || prm->flag_3 == '0') ? '0' : ' ';
 	if (sign)
 		n = -n;
 	int_part = (unsigned long)n;
 	precision = (prm->precision == -1) ? 6 : prm->precision;
 	tmp = n - (double)int_part;
-//	printf(" !!fraction_tmp: %f!! ", tmp);
 	dot = (tmp != 0 && precision > 0) ? 1 : 0;
 	if (tmp)
 	{
@@ -70,9 +69,7 @@ void ft_putnbr_f(double n, t_param *prm)
 			i++;
 		}
 	}
-	fraction_part = (long)(float)tmp;
-//	printf(" !!fraction_tmp: %f!! ", tmp);
-//	printf(" !!fraction: %ld!! \n", fraction_part);
+	fraction_part = (long)tmp;
 	
 //	rounding integer part
 	if (!dot && n - (double)int_part >= 0.5)
@@ -128,7 +125,4 @@ void ft_putnbr_f(double n, t_param *prm)
 			ft_putstr(ft_itoa_base_ul(fraction_part, 10, 0));
 		}
 	}
-//!!!! почему то при очисте памяти происходит некорректный вывод - разобраться!!
-//	free(res);
-//	ft_putstr(res);
 }

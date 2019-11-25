@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/24 21:38:40 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/25 18:09:43 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
     plus = (prm->flag == '+' || prm->flag_2 == '+' || prm->flag_3 == '+') ? 1 : 0;
     hash = (prm->flag == '#' || prm->flag_2 == '#' || prm->flag_3 == '#') ? 1 : 0;
     hash = (n == 0 && prm->precision == -1) ? 0 : hash;
-    // sign меняем на hash
-    //    sign = (plus) ? 1 : 0;
-    
-    //    sign = (n < 0) ? 1 : 0;
-    //    if (prm->flag == '+' || prm->flag_2 == '+')
-    //        sign = 1;
     
     width = (prm->width >= prm->precision) ? prm->width : prm->precision;
-    //    printf("flag: %c, flag_2: %c ", prm->flag, prm->flag_2);
-    //    printf(" width: %d, sign: %d, size: %d, c_fill: %c printf: ", width, sign, size, c_fill);
     if (width > size)
     {
         if (hash && prm->precision > prm->width)
@@ -53,9 +45,7 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
             //printf("case\n");
             if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
                 ft_error(1);
-            // width++;
         }
-        //        else if(space && head && prm->width > prm->precision && prm->width > size && size > prm->precision)
         else if(space && head && prm->width > prm->precision && prm->width > size)
         {
             if (!(str = (char*)malloc(sizeof(char) * (width + 2*hash))))
@@ -76,8 +66,7 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
                 ft_error(1);
         }
         //        printf("width_-1: %zu", ft_strlen(str));
-        //
-        
+          
         char_fill(str, 0, width + 1, ' ', 1);
         
         if (prm->width > prm->precision && prm->precision > size && !head)
@@ -87,58 +76,80 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
         else if (prm->width > prm->precision && prm->precision == -1 && c_fill == '0')
             char_fill(str, 0, width + 1, '0', 1);
         else if (prm->width < prm->precision && prm->precision > size)
-        {
-            //printf("case11\n");
             char_fill(str, 0, width + 1, '0', 1);
-        }
         
         //        printf("str: %s\n", str);
         //        printf("width_0: %zu", ft_strlen(str));
         nbr_str = ft_itoa_base_u(n, 16, cap);
-        if (head && hash)
+        if (head && hash && (width > size + 2) && n && prm->width >= prm->precision)
 		{
             str[0] = '0';
-			str[1] = 'x';
+			str[1] = (!cap) ?'x' : 'X';
 		}
-        else if (!head && hash && prm->width < prm->precision)
+		else if (head && hash && (width > size + 2) && n && prm->width < prm->precision)
 		{
-		 	str[0] = '0';
-			str[1] = 'x';
+			if (!cap)
+				ft_putstr("0x");
+			else
+				ft_putstr("0X");
 		}
-        else if (!head && hash && prm->width >= prm->precision && prm->precision == 0 && !n)
+        else if (!head && hash && (prm->width < prm->precision) && n)
 		{
-			str[ft_strlen(str) - 1] = '0';
-			str[ft_strlen(str) - 1] = '1';
+//			printf("case1");
+			if (!cap)
+				ft_putstr("0x");
+			else
+				ft_putstr("0X");
 		}
-		else if (!head && hash && prm->width >= prm->precision && prm->precision <= size)
-        {
-            if (c_fill == '0' && prm->precision == -1)
+		else if (hash && (width > size + 2) && n)
+		{
+//			printf("case2\n");
+			if (prm->precision <= size && (c_fill == ' ' || (c_fill == '0' && prm->precision != -1)))
+			{
+//				printf("case1");
+				str[width - size - 2] = '0';
+				str[width - size - 1] = (!cap) ? 'x' : 'X';
+			}
+			else if (prm->precision <= size && c_fill == '0')
 			{
 				str[0] = '0';
-				str[1] = 'x';
+				str[1] = (!cap) ? 'x' : 'X';
 			}
-            else
+			else
 			{
-                str[width + 2 * hash - size - 2] = '0';
-				str[width + 2 * hash - size - 1] = 'x';
+				str[width - prm->precision - 2] = '0';
+				str[width - prm->precision - 1] = (!cap) ? 'x' : 'X';
 			}
-        }
-        //        else if (!head && hash && prm->width >= prm->precision && prm->precision > size)
-        //        {
-        //            str[prm->width - prm->precision - 1] = '0';
-        //        }
+
+		}
+		else if (hash && width < size + 2)
+		{
+			if (!cap)
+				ft_putstr("0x");
+			else
+				ft_putstr("0X");
+			ft_putstr(nbr_str);
+			return ;
+		}
+
         
-        i = (str[0] == '-' || str[0] == '+') ? 1 : 0;
-		if ((hash && str[0] == '0'))
-			i = 2;
+        i = 0;
+		if ((hash && head) && n)
+		{
+//			printf("case1");
+			if (prm->precision <= size)
+				i = 2;
+			else if (prm->precision >= prm->width)
+				i = prm->precision - size;
+			else
+				i = prm->precision - size + 2;
+		}
 		else if (!head)
             i = width + 2 * hash - size - 2 * hash;
         else if (prm->precision > size && head)
             i = prm->precision - size;
-        //          i = prm->precision - size + hash;
         j = 0;
         
-        //        printf("i: %d\n", i);
         while (nbr_str[j] && str[i + j])
         {
             //нули с нулевой точностью не выводяться
@@ -156,9 +167,8 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
     {
         if (!n && prm->precision == 0)
         {
-            //            printf("case1\n");
-            if (hash)
-                ft_putstr("0x");
+//            if (hash)
+//                ft_putstr("0x");
         }
         else
         {
@@ -166,8 +176,10 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
                 ft_putchar(' ');
             if (plus)
                 ft_putchar('+');
-            if (hash)
+            if (hash && !cap)
                 ft_putstr("0x");
+			else if (hash && cap)
+				ft_putstr("0X");
             ft_putstr(ft_itoa_base_u(n, 16, cap));
         }
     }
