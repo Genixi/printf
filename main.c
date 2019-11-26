@@ -2,9 +2,27 @@
 #include <stdio.h>
 int main(void)
 {
+    ft_printf("1:this %f float\n", 1.5);
+    printf("1:this %f float\n", 1.5);
+    ft_printf("2:%f\n", 7.5);
+    printf("2:%f\n", 7.5);
+    ft_printf("3:%f\n", 1.0);
+    printf("3:%f\n", 1.0);
+    ft_printf("4:%f\n", -3.85);
+    printf("4:%f\n", -3.85);
+    ft_printf("5:%f\n", 573.924);
+    printf("5:%f\n", 573.924);
+    ft_printf("6:%f\n", -958.125);
+    printf("6:%f\n", -958.125);
+  	ft_printf("7:%f\n", 23.00041);
+    printf("7:%f\n", 23.00041);
+    ft_printf("8:%f\n", 0.000039);
+    printf("8:%f\n", 0.000039);
+    
+    
     ft_printf("1:%f\n", 1.0);
     printf("1:%f\n", 1.0);
-    ft_printf("2:%f\n", -875.000001);
+	ft_printf("2:%f\n", -875.000001);
     printf("2:%f\n", -875.000001);
     ft_printf("3:%f\n", 3.9999999);
     printf("3:%f\n", 3.9999999);

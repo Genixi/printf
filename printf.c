@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:13:07 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/19 20:48:16 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/26 17:37:17 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int ft_printf(const char *restrict format, ...)
     va_start(ap, format);
     res = 0;
     str = (char*)format;
+	
+//	printf("st");
+	
 	while (*str)
     {
         if (*str == '%')

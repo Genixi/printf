@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/26 16:06:32 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/26 17:22:18 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ typedef struct		s_param
     char			mod;
 	char			mod_2;
 	char        	type;
+	int				head;
+	int				null;
+	int				hash;
+	int				plus;
+	int				space;
 }					t_param;
 
 typedef struct		s_nbr
 {
-	int				width;
+	int				size;
 	long			decimal;
 	unsigned long	n;
 

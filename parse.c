@@ -6,13 +6,23 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/24 15:47:27 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/26 17:37:40 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+void set_param(t_param *prm)
+{
+//	printf("set params");
+	prm->hash = (prm->flag == '#' || prm->flag_2 == '#' || prm->flag_3 == '#') ? 1 : 0;
+	prm->space = (prm->flag == ' ' || prm->flag_2 == ' ' || prm->flag_3 == ' ') ? 1 : 0;
+	prm->plus = (prm->flag == '+' || prm->flag_2 == '+' || prm->flag_3 == '+') ? 1 : 0;
+	prm->null = (prm->flag == '0' || prm->flag_2 == '0' || prm->flag_3 == '0') ? 1 : 0;
+	prm->head = (prm->flag == '-' || prm->flag_2 == '-' || prm->flag_3 == '-') ? 1 : 0;
+}
 
 int ft_prm_parse(char *str, t_param *prm)
 {
@@ -132,6 +142,7 @@ int ft_prm_parse(char *str, t_param *prm)
 	if (!i)
 		ft_error(2);
 
+	set_param(prm);
 	return (i);
 }
 
