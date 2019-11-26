@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/21 21:48:25 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/26 16:06:32 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct		s_param
 	char			mod_2;
 	char        	type;
 }					t_param;
+
+typedef struct		s_nbr
+{
+	int				width;
+	long			decimal;
+	unsigned long	n;
+
+}					t_nbr;
 
 int					ft_printf(const char *restrict format, ...);
 int					ft_prm_parse(char *s, t_param *p);
