@@ -6,12 +6,21 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/27 18:09:36 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/27 20:59:21 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
+
+void ft_put_decimal(long decimal)
+{
+	if (decimal >= 10)
+		ft_put_decimal(decimal / 10);
+	decimal %= 10;
+	ft_putchar(decimal + '0');
+}
+
 int decimal_count(double n)
 {
 	int i;
@@ -19,15 +28,16 @@ int decimal_count(double n)
 
 	i = 0;
 	if (n < 0)
-		n *= -1;
-	decimal = n - (long)n;
-//	printf("\ndecimal: %Lf\n", decimal);
+		n *= -1; 
+	decimal = n - (unsigned long)n;
+//	printf("\ndecimal before: %.20Lf\n", decimal);
 	if (decimal)
-		while(decimal < 1.0)
+		while(decimal < (double long)1.0)
 		{
 			i++;
 	   		decimal *= 10;
-//			printf("decimal: %LF:, <1.0?: %d, i: %d\n", decimal, (decimal < 1.0), i);
+//			printf("compare: %d\n", decimal == 0.000001);
+//			printf("decimal: %.20LF:, <1.0?: %d, i: %d\n", decimal, (decimal < 1.0), i);
 		}
 	else
 		return (0);
@@ -66,27 +76,62 @@ void ft_putnbr_f(double n, t_param *prm)
 	tmp.size = get_num_len(tmp.n);
 	dot = (tmp.decimal != 0 && precision >= 0) ? 1 : 0;   
 
-	c_fill = (prm->null) ? '0' : ' ';
+	c_fill = (prm->null && !prm->head) ? '0' : ' ';
 	
 //	printf("\nsign: %d, int part: %lu, dec part: %ld\n", sign, tmp.n, tmp.decimal);
 	
 	i = 0;
-	if (prm->width > tmp.size + dot + precision + sign + prm->space)
+	if (prm->width > tmp.size + dot * ((precision == 0) ? 0 : 1) + precision + sign + prm->space)
 	{
-		while (i++ < prm->width - (tmp.size + dot + precision + sign))
-			if (!prm->head)
-				ft_putchar(c_fill);
-		if (prm->space)
-		   ft_putchar(' ');
+//		printf("\ncase1\n");
 		if (sign)
-			ft_putchar('-');
-		else if (prm->plus)
-			ft_putchar('+');
-		ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
-		if (precision >= 0 && tmp.decimal)
 		{
-			ft_putchar('.');
-			ft_putstr(ft_itoa_base_li(tmp.decimal, 10 ,0));
+			i++;
+			ft_putchar('-');
+		}
+		if (!prm->head)
+		{
+			while (i++ < prm->width - (tmp.size  + dot* ((precision == 0) ? 0 : 1) + precision + sign - 1))
+				ft_putchar(c_fill);
+			if (prm->space)
+				ft_putchar(' ');
+			else if (prm->plus)
+				ft_putchar('+');
+			ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
+			if (precision >= 0 && tmp.decimal)
+			{
+//			printf("case1");
+				ft_putchar('.');
+				ft_putstr(ft_itoa_base_li(tmp.decimal, 10 ,0));
+//			ft_put_decimal(tmp.decimal);
+//			printf("%ld", tmp.decimal);
+			}
+		}
+		else
+		{
+//			printf("i start: %d\n", i);
+			if (prm->space)
+			{
+				i++;
+				ft_putchar(' ');
+			}
+			else if (prm->plus)
+			{
+				i++;
+				ft_putchar('+');
+			}
+			ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
+			i += ft_strlen(ft_itoa_base_ul(tmp.n, 10, 0));
+//			printf("i middle: %d\n", i);
+			if (precision >= 0 && tmp.decimal)
+			{
+				ft_putchar('.');
+				ft_putstr(ft_itoa_base_li(tmp.decimal, 10 ,0));
+				i += ft_strlen(ft_itoa_base_li(tmp.decimal, 10 ,0)) + 1;
+			}
+//			printf("i end: %d\n", i);
+			while (i++ < prm->width)
+				ft_putchar(c_fill);
 		}
 	}
 	else
@@ -107,7 +152,8 @@ void ft_putnbr_f(double n, t_param *prm)
 		}
 		else if (precision >= 0)
 		{
-			ft_putchar('.');
+			if (!(precision == 0 && !prm->hash))
+				ft_putchar('.');
 			count --;
 			if (count == precision)
 				while (count > 1 && precision > 1)
@@ -137,6 +183,8 @@ void ft_putnbr_f(double n, t_param *prm)
 				ft_putchar(str[i++]);
 				precision--;
 			}
+//			ft_put_decimal(tmp.decimal);
+//			precision -= ft_strlen(ft_itoa_base_li(tmp.decimal, 10, 0));
 			while (precision)
 			{
 				ft_putchar('0');

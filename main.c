@@ -2,15 +2,14 @@
 #include <stdio.h>
 int main(void)
 {
-    //miracle
+    //tough cases
 /*
-    ft_printf("16:%.7f\n", -875.000001);
-    printf("16:%.7f\n", -875.000001);
-    ft_printf("19:%.8f\n", -875.000001);
-    printf("19:%.8f\n", -875.000001);
-    ft_printf("%.9f\n", -875.000001);
-*/
-/*
+      ft_printf("16:%.7f\n", -875.000001);
+      printf("16:%.7f\n", -875.000001);
+      ft_printf("19:%.8f\n", -875.000001);
+      printf("19:%.8f\n", -875.000001);
+      ft_printf("%.9f\n", -875.000001);
+
     ft_printf("1:%.16f\n",  0.999999999999999900);
     printf("1:%.16f\n",  0.999999999999999900);
     ft_printf("2:%.16f\n",        1.025978548534310421);
@@ -20,6 +19,29 @@ int main(void)
     ft_printf("4:%.18f\n",        0.125978548534310421);
     printf("4:%.18f\n",        0.125978548534310421);
 */
+
+    ft_printf("0:this %.0f float\n", 1.6);
+    printf("0:this %.0f float\n", 1.6);
+    ft_printf("1:%.0f\n", 7.4);
+    printf("1:%.0f\n", 7.4);
+    ft_printf("2:%.0f\n", 1.0);
+    printf("2:%.0f\n", 1.0);
+    ft_printf("3:%.0f\n", -3.85);
+    printf("3:%.0f\n", -3.85);
+    ft_printf("4:%.0f\n", 573.924);
+    printf("4:%.0f\n", 573.924);
+    ft_printf("5:%.0f\n", -958.125);
+    printf("5:%.0f\n", -958.125);
+    ft_printf("6:%.0f\n", 23.00041);
+    printf("6:%.0f\n", 23.00041);
+    ft_printf("7:%.0f\n", 0.000039);
+    printf("7:%.0f\n", 0.000039);
+    ft_printf("8:%.0f\n", -7.00036);
+    printf("8:%.0f\n", -7.00036);
+    ft_printf("9:%.0f\n", -0.00032);
+    printf("9:%.0f\n", -0.00032);
+    
+    
     ft_printf("5:%#.0f\n", -7.4);
     printf("5:%#.0f\n", -7.4);
     ft_printf("6:%05.0f\n", -7.3);
@@ -28,7 +50,6 @@ int main(void)
     printf("7:%05.1f\n", -7.3);
     ft_printf("8:%-5.0f\n", 7.3);
     printf("8:%-5.0f\n", 7.3);
-/*
     ft_printf("9:%-5.1f\n", 7.3);
     printf("9:%-5.1f\n", 7.3);
     ft_printf("10:%-5.3f\n", 7.3);
@@ -49,8 +70,7 @@ int main(void)
     printf("17:%0-5.0f\n", -7.3);
     ft_printf("18:%0-5.1f\n", -7.3);
     printf("18:%0-5.1f\n", -7.3);
-*/
-    
+
 /*
     ft_printf("1:%.7f\n", 0.0000001);
     printf("1:%.7f\n", 0.0000001);
