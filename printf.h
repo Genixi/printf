@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/26 17:22:18 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/27 16:23:45 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ char				*ft_itoa_base_hi(short int nbr, int base, int cap);            //short_i
 char				*ft_itoa_base_hu(unsigned short int value, int base, int cap);
 char                *ft_itoa_base_hhi(signed char nbr, int base, int cap);
 char				*ft_itoa_base_hhu(unsigned char value, int base, int cap);
+double				ft_power(double n, int pow);
 
 #endif //FT_PRINTF_PRINTF_H

@@ -2,6 +2,117 @@
 #include <stdio.h>
 int main(void)
 {
+    //miracle
+/*
+    ft_printf("16:%.7f\n", -875.000001);
+    printf("16:%.7f\n", -875.000001);
+    ft_printf("19:%.8f\n", -875.000001);
+    printf("19:%.8f\n", -875.000001);
+    ft_printf("%.9f\n", -875.000001);
+*/
+/*
+    ft_printf("1:%.16f\n",  0.999999999999999900);
+    printf("1:%.16f\n",  0.999999999999999900);
+    ft_printf("2:%.16f\n",        1.025978548534310421);
+    printf("2:%.16f\n",        1.025978548534310421);
+    ft_printf("3:%.17f\n",        1.025978548534310421);
+    printf("3:%.17f\n",        1.025978548534310421);
+    ft_printf("4:%.18f\n",        0.125978548534310421);
+    printf("4:%.18f\n",        0.125978548534310421);
+*/
+    ft_printf("5:%#.0f\n", -7.4);
+    printf("5:%#.0f\n", -7.4);
+    ft_printf("6:%05.0f\n", -7.3);
+    printf("6:%05.0f\n", -7.3);
+    ft_printf("7:%05.1f\n", -7.3);
+    printf("7:%05.1f\n", -7.3);
+    ft_printf("8:%-5.0f\n", 7.3);
+    printf("8:%-5.0f\n", 7.3);
+/*
+    ft_printf("9:%-5.1f\n", 7.3);
+    printf("9:%-5.1f\n", 7.3);
+    ft_printf("10:%-5.3f\n", 7.3);
+    printf("10:%-5.3f\n", 7.3);
+    ft_printf("11:%-05.0f\n", 7.3);
+    printf("11:%-05.0f\n", 7.3);
+    ft_printf("12:%-05.1f\n", 7.3);
+    printf("12:%-05.1f\n", 7.3);
+    ft_printf("13:%-05.0f\n", -7.3);
+    printf("13:%-05.0f\n", -7.3);
+    ft_printf("14:%-05.1f\n", -7.3);
+    printf("14:%-05.1f\n", -7.3);
+    ft_printf("15:%0-5.0f\n", 7.3);
+    printf("15:%0-5.0f\n", 7.3);
+    ft_printf("16:%0-5.1f\n", 7.3);
+    printf("16:%0-5.1f\n", 7.3);
+    ft_printf("17:%0-5.0f\n", -7.3);
+    printf("17:%0-5.0f\n", -7.3);
+    ft_printf("18:%0-5.1f\n", -7.3);
+    printf("18:%0-5.1f\n", -7.3);
+*/
+    
+/*
+    ft_printf("1:%.7f\n", 0.0000001);
+    printf("1:%.7f\n", 0.0000001);
+    ft_printf("7:%f\n", 23.00041);
+    printf("7:%f\n", 23.00041);
+    ft_printf("8:%f\n", 0.000039);
+    printf("8:%f\n", 0.000039);
+    ft_printf("2:%.7f\n", -0.0000001);
+    printf("2:%.7f\n", -0.0000001);
+    ft_printf("3:%.8f\n", 0.00000039);
+    printf("3:%.8f\n", 0.00000039);
+    ft_printf("4:this %.9f float\n", 1.5);
+    printf("4:this %.9f float\n", 1.5);
+    ft_printf("5:%.9f\n", 7.5);
+    printf("5:%.9f\n", 7.5);
+    ft_printf("6:%.9f\n", 1.0);
+    printf("6:%.9f\n", 1.0);
+    ft_printf("7:%.9f\n", -3.85);
+    printf("7:%.9f\n", -3.85);
+    ft_printf("8:%.9f\n", 573.924);
+    printf("8:%.9f\n", 573.924);
+    ft_printf("9:%.9f\n", -958.125);
+    printf("9:%.9f\n", -958.125);
+    ft_printf("10:%.9f\n", 23.00041);
+    printf("10:%.9f\n", 23.00041);
+    ft_printf("11:%.9f\n", 0.00000039);
+    printf("11:%.9f\n", 0.00000039);
+    ft_printf("12:%.9f\n", -7.00036);
+    printf("12:%.9f\n", -7.00036);
+    ft_printf("13:%.9f\n", -0.0000032);
+    printf("13:%.9f\n", -0.0000032);
+    ft_printf("14:%.9f\n", 0.00000001);
+    printf("14:%.9f\n", 0.00000001);
+    ft_printf("15:%.9f\n", -0.00000001);
+    printf("15:%.9f\n", -0.00000001);
+    ft_printf("16:%.9f\n", 9873.000001);
+    printf("16:%.9f\n", 9873.000001);
+    ft_printf("17:%.9f\n", -875.000001);
+    printf("17:%.9f\n", -875.000001);
+    ft_printf("18:%.9f\n", 999.99999999);
+    printf("18:%.9f\n", 999.99999999);
+    ft_printf("19:%.9f\n", -99.99999999);
+    printf("19:%.9f\n", -99.99999999);
+    ft_printf("20:%.9f\n", 0.999999);
+    printf("20:%.9f\n", 0.999999);
+    ft_printf("21:%.9f\n", -0.999999);
+	printf("21:%.9f\n", -0.999999);
+
+    ft_printf("%.9f", 23.375094499);
+    ft_printf("%.9f", -985.765426499);
+    ft_printf("%.9f", 0.0894255);
+    ft_printf("%.9f", -56.2012685);
+    ft_printf("%.9f", 43.4399999);
+    ft_printf("%.9f", -5.0299999);
+    ft_printf("%.9f", 43.43999949);
+    ft_printf("%.9f", -5.02999949);
+    ft_printf("%.9f", 1.99999949);
+    ft_printf("%.9f", -0.99999949);
+    ft_printf("%.9f", 3.9999999);
+
+    // older tests
+
     ft_printf("1:this %f float\n", 1.5);
     printf("1:this %f float\n", 1.5);
     ft_printf("2:%f\n", 7.5);
@@ -14,16 +125,15 @@ int main(void)
     printf("5:%f\n", 573.924);
     ft_printf("6:%f\n", -958.125);
     printf("6:%f\n", -958.125);
-  	ft_printf("7:%f\n", 23.00041);
-    printf("7:%f\n", 23.00041);
-    ft_printf("8:%f\n", 0.000039);
-    printf("8:%f\n", 0.000039);
-    
-    
+  	
+  
     ft_printf("1:%f\n", 1.0);
     printf("1:%f\n", 1.0);
+
 	ft_printf("2:%f\n", -875.000001);
     printf("2:%f\n", -875.000001);
+   
+
     ft_printf("3:%f\n", 3.9999999);
     printf("3:%f\n", 3.9999999);
     ft_printf("4:%f\n", -5.9999999);
@@ -52,6 +162,7 @@ int main(void)
     printf("15:%.7f\n", 1.0);
     ft_printf("16:%.7f\n", -875.000001);
     printf("16:%.7f\n", -875.000001);
+
     ft_printf("17:%.8f\n", 1.0);
     printf("17:%.8f\n", 1.0);
     ft_printf("18:%.8f\n", 9873.000001);
@@ -70,6 +181,8 @@ int main(void)
     printf("24:%.8f\n", 23.375094499);
     ft_printf("25:%.8f\n", -985.765426499);
     printf("25:%.8f\n", -985.765426499);
+ 
+*/
 
 /*
     ft_printf("1:this %#X number\n", 17);

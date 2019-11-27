@@ -6,15 +6,20 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/26 16:53:02 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/27 15:55:11 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
+void put_sign( )
 
 void ft_put_f(t_nbr *tmp, t_param *prm)
 {
+	if (prm->null && !prm->head)
+	{
+
+	}
 	
 
 }

@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 22:00:11 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/08 19:02:00 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/27 16:56:16 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void ft_error(int n)
     if (n == 2)
 		ft_putstr("invalid %% format\n");
 	exit(0);
+}
+
+double ft_power(double n, int pow)
+{
+	return (pow ? n * ft_power(n, pow - 1) : 1);
 }
 
 void display_str(t_param *prm)
