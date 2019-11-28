@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/27 20:59:21 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/28 17:42:19 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,48 +59,59 @@ void ft_putnbr_f(double n, t_param *prm)
     int precision;
 	char *str;
    
-//	printf("case0");
 
     sign = (n < 0) ? 1 : 0;
     n = (n < 0) ? (n *= -1) : n;
 	count = decimal_count(n);
     precision = (prm->precision == -1) ? 6 : prm->precision;
-//  printf("\nbefore: %f\n", n - (long)n);
 	decimal = (n - (long)n) * ft_power(10, precision + 1);
-// 	printf("after: %Lf\n", decimal);
 	decimal = ((long)decimal % 10 > 4) ? (decimal) / 10 + 1 : decimal / 10;
-//  printf("decimal_1: %Lf\n", decimal);
 	tmp.n = (long)n + (long)(decimal / ft_power(10, precision));
     tmp.decimal = (long)decimal % (long)ft_power(10, precision);
-//  printf("\ntmp.decimal: %ld\n", tmp.decimal);
 	tmp.size = get_num_len(tmp.n);
 	dot = (tmp.decimal != 0 && precision >= 0) ? 1 : 0;   
 
 	c_fill = (prm->null && !prm->head) ? '0' : ' ';
 	
-//	printf("\nsign: %d, int part: %lu, dec part: %ld\n", sign, tmp.n, tmp.decimal);
+//	printf("\ntmp.size: %d, sign: %d, int part: %lu, dec part: %ld\n", tmp.size, sign, tmp.n, tmp.decimal);
 	
+	if (prm->plus)
+		prm->space = 0;
 	i = 0;
-	if (prm->width > tmp.size + dot * ((precision == 0) ? 0 : 1) + precision + sign + prm->space)
+//	printf("res: %d\n", tmp.size + dot * ((precision == 0) ? 0 : 1) + precision + sign + prm->space);
+	if (prm->width > tmp.size + dot * ((precision == 0) ? 0 : 1) + precision + (sign || prm->space))
 	{
-//		printf("\ncase1\n");
-		if (sign)
+		if (prm->space && c_fill == '0' && !(sign || prm->plus))
 		{
 			i++;
-			ft_putchar('-');
+			ft_putchar(' ');
+			prm->space = 0;
+		}
+		if ((sign || prm->plus) && (prm->head || prm->null))
+		{
+			i++;
+			(sign) ? ft_putchar('-') : ft_putchar('+');
+			sign = 0;
+			prm->plus = 0;
+			prm->space = 0;
 		}
 		if (!prm->head)
 		{
-			while (i++ < prm->width - (tmp.size  + dot* ((precision == 0) ? 0 : 1) + precision + sign - 1))
+//			printf("aa");
+			while (i++ < prm->width - (tmp.size  + dot* ((precision == 0) ? 0 : 1) + precision + (sign || prm->plus)))
 				ft_putchar(c_fill);
-			if (prm->space)
+			if (prm->space && !(c_fill == ' ' && i > 2) && !(sign || prm->plus))
+			{
+//				printf("ss");
+				i++;
 				ft_putchar(' ');
-			else if (prm->plus)
-				ft_putchar('+');
+			}
+			else if ((sign || prm->plus) && i++)
+				(sign) ? ft_putchar('-') : ft_putchar('+');
 			ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
 			if (precision >= 0 && tmp.decimal)
 			{
-//			printf("case1");
+//				printf("case1");
 				ft_putchar('.');
 				ft_putstr(ft_itoa_base_li(tmp.decimal, 10 ,0));
 //			ft_put_decimal(tmp.decimal);
@@ -120,14 +131,22 @@ void ft_putnbr_f(double n, t_param *prm)
 				i++;
 				ft_putchar('+');
 			}
+//			while (i++ < prm->width - (tmp.size  + dot* ((precision == 0) ? 0 : 1) + precision))
+//				ft_putchar(c_fill);
 			ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
 			i += ft_strlen(ft_itoa_base_ul(tmp.n, 10, 0));
 //			printf("i middle: %d\n", i);
 			if (precision >= 0 && tmp.decimal)
 			{
+//				printf("case2");
 				ft_putchar('.');
 				ft_putstr(ft_itoa_base_li(tmp.decimal, 10 ,0));
 				i += ft_strlen(ft_itoa_base_li(tmp.decimal, 10 ,0)) + 1;
+			}
+			else if (precision == 0 && prm->hash)
+			{
+				i++;
+				ft_putchar('.');
 			}
 //			printf("i end: %d\n", i);
 			while (i++ < prm->width)
@@ -136,10 +155,13 @@ void ft_putnbr_f(double n, t_param *prm)
 	}
 	else
 	{
-		if (prm->space)
+		if (prm->space && !sign)
 			ft_putchar(' ');
 		if (sign)
+		{
 			ft_putchar('-');
+			sign = 0;
+		}
 		else if (prm->plus)
 			ft_putchar('+');
 		ft_putstr(ft_itoa_base_ul(tmp.n, 10, 0));
@@ -152,24 +174,21 @@ void ft_putnbr_f(double n, t_param *prm)
 		}
 		else if (precision >= 0)
 		{
+//			printf("case3");
 			if (!(precision == 0 && !prm->hash))
 				ft_putchar('.');
 			count --;
 			if (count == precision)
 				while (count > 1 && precision > 1)
 				{
-//					printf("case2");
-//					printf("count2: %d, precision: %d\n", count, precision);
 					ft_putchar('0');
 					precision--;
 					count--;
 				}
 			else
 			{
-//				printf("\ncount: %d, precision: %d\n", count, precision);
 				while(count && precision)
 				{
-//					printf("case1");
 					ft_putchar('0');
 					precision--;
 					count--;
@@ -183,8 +202,6 @@ void ft_putnbr_f(double n, t_param *prm)
 				ft_putchar(str[i++]);
 				precision--;
 			}
-//			ft_put_decimal(tmp.decimal);
-//			precision -= ft_strlen(ft_itoa_base_li(tmp.decimal, 10, 0));
 			while (precision)
 			{
 				ft_putchar('0');

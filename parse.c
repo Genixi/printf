@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:45:29 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/27 16:19:45 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/28 18:09:44 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 void set_param(t_param *prm)
 {
-//	printf("set params");
 	prm->hash = (prm->flag == '#' || prm->flag_2 == '#' || prm->flag_3 == '#') ? 1 : 0;
 	prm->space = (prm->flag == ' ' || prm->flag_2 == ' ' || prm->flag_3 == ' ') ? 1 : 0;
 	prm->plus = (prm->flag == '+' || prm->flag_2 == '+' || prm->flag_3 == '+') ? 1 : 0;
 	prm->null = (prm->flag == '0' || prm->flag_2 == '0' || prm->flag_3 == '0') ? 1 : 0;
 	prm->head = (prm->flag == '-' || prm->flag_2 == '-' || prm->flag_3 == '-') ? 1 : 0;
+	prm->c_fill = (prm->null) ? '0' : ' ';
 }
 
 int ft_prm_parse(char *str, t_param *prm)
