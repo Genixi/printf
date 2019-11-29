@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:41:15 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/28 17:25:10 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/29 16:26:01 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int decimal_count_l(long double n)
     decimal = n - (unsigned long)n;
     //    printf("\ndecimal before: %.20Lf\n", decimal);
     if (decimal)
-        while(decimal < (double long)1.0)
+        while(decimal < 1)
         {
             i++;
             decimal *= 10;
@@ -34,7 +34,9 @@ int decimal_count_l(long double n)
         return (0);
     
     //    printf("\ni: %d\n", i);
-    return (i);
+    if (i == 7 && (int)decimal == 9)
+		i -= 1;
+	return (i);
 }
 
 void ft_putnbr_lf(long double n, t_param *prm)

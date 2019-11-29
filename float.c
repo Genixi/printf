@@ -6,43 +6,40 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:41 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/28 17:42:19 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/29 18:11:01 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
 
-void ft_put_decimal(long decimal)
-{
-	if (decimal >= 10)
-		ft_put_decimal(decimal / 10);
-	decimal %= 10;
-	ft_putchar(decimal + '0');
-}
-
 int decimal_count(double n)
 {
 	int i;
 	double long decimal;
+//	double decimal;
 
 	i = 0;
 	if (n < 0)
 		n *= -1; 
 	decimal = n - (unsigned long)n;
-//	printf("\ndecimal before: %.20Lf\n", decimal);
+//	printf("\ndecimal Lf: %.20Lf\n", decimal);
+//	printf("\ndecimal f: %.20f\n", decimal);
 	if (decimal)
-		while(decimal < (double long)1.0)
+		while(decimal < 1)
 		{
 			i++;
 	   		decimal *= 10;
 //			printf("compare: %d\n", decimal == 0.000001);
-//			printf("decimal: %.20LF:, <1.0?: %d, i: %d\n", decimal, (decimal < 1.0), i);
+//			printf("decimal: %.20LF, i: %d\n", decimal, i);
+//			printf("decimal * 10 < 5 ?: %d\n", decimal * 10 < 5);
 		}
 	else
 		return (0);
 
 //	printf("\ni: %d\n", i);
+	if (i == 7 && (int)decimal == 9)
+		i -= 1;
 	return (i);
 }
 
@@ -74,7 +71,8 @@ void ft_putnbr_f(double n, t_param *prm)
 	c_fill = (prm->null && !prm->head) ? '0' : ' ';
 	
 //	printf("\ntmp.size: %d, sign: %d, int part: %lu, dec part: %ld\n", tmp.size, sign, tmp.n, tmp.decimal);
-	
+//	printf("\nnumber: %.20f\n", n);
+//	printf("decimal: %.20Lf\n", decimal);	
 	if (prm->plus)
 		prm->space = 0;
 	i = 0;
