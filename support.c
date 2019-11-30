@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 22:00:11 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/27 16:56:16 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/30 15:51:02 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,53 @@ void ft_error(int n)
 	exit(0);
 }
 
+int get_num_len(long int n)
+{
+	int size;
+
+	size = 0;
+	if (n < 0)
+		n = n * -1;
+	while (n)
+	{
+		if (n /= 10)
+			size++;
+	}
+	size++;
+	return (size);
+}
+
 double ft_power(double n, int pow)
 {
 	return (pow ? n * ft_power(n, pow - 1) : 1);
 }
 
-void display_str(t_param *prm)
+void char_fill_0(char *str, int start, int end, char c)
 {
-	printf("flag: %c ", prm->flag);
-	printf("width: %d ", prm->width);
-	printf("precision: %d ", prm->precision);
-	printf("modificator: %c ", prm->mod);
-	printf("type: %c", prm->type);	
+	int i;
+
+	i = start;
+	while (i < end)
+		str[i++] = c;
 }
 
+void char_fill_eof(char *str, int start, int end, char c)
+{
+	int i;
+
+	i = start;
+	while (i < end)
+		str[i++] = c;
+	str[end - 1] = '\0';
+}
+
+void	char_fill(char *str, int start, int end, char c, int eof)
+{
+	int i;
+
+	i = start;
+	while (i < end)
+		str[i++] = c;
+	if (eof)
+		str[end - 1] = '\0';
+}

@@ -6,143 +6,137 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:32:20 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/29 18:34:52 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/30 17:43:55 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
 
-int		get_num_len(long int n)
+void	set_str(char **str, t_param *prm, int *width, int n)
 {
 	int size;
-
-	size = 0;
-	if (n < 0)
-		n = n * -1;
-	while (n)
-	{
-		if (n /= 10)
-			size++;
-	}
-	size++;
-	return (size);
-}
-
-void	char_fill(char *str, int start, int end, char c, int eof)
-{
-	int i;
-
-	i = start;
-	while (i < end)
-		str[i++] = c;
-	if (eof)
-		str[end - 1] = '\0';
-}
-
-void    ft_putnbr_i(int n, t_param *prm)
-{
-	int	size;
-	int i;
-    int j;
 	int sign;
-	int width;
-	char* str;
-	char* nbr_str;
-    
-	nbr_str = NULL;
+
 	size = get_num_len(n);
 	sign = (n < 0 || prm->plus) ? 1 : 0;
-	
-	width = (prm->width >= prm->precision) ? prm->width : prm->precision;
-	if (width > size)
+	if (sign && prm->precision > prm->width)
+		(*str) = (char*)malloc(sizeof(char) * (sign + 1 + (*width)++));
+	else if (prm->space && prm->head && prm->width > prm->precision &&
+			prm->width > size)
 	{
-		if (sign && prm->precision > prm->width)
-		{
-			if (!(str = (char*)malloc(sizeof(char) * (width + sign + 1))))
-				ft_error(1);
-			width++;
-		}
-		else if(prm->space && prm->head && prm->width > prm->precision && prm->width > size)
-		{
-			if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
-				ft_error(1);
-			width += sign - 1;			
-		}
-		else if(prm->space && prm->c_fill == '0' && prm->width > prm->precision && prm->width > size && size > prm->precision)
-		{
-			if (prm->precision != -1 && !sign)
-				width++;
-			if (!(str = (char*)malloc(sizeof(char) * (width + sign))))
-				ft_error(1);
-			width += sign -1;
-		}
+		(*str) = (char*)malloc(sizeof(char) * (*width + sign));
+		(*width) += sign - 1;
+	}
+	else if (prm->space && prm->c_fill == '0' &&
+			prm->width > prm->precision && prm->width > size &&
+			size > prm->precision)
+	{
+		if (prm->precision != -1 && !sign)
+			(*width)++;
+		(*str) = (char*)malloc(sizeof(char) * ((*width) + sign));
+		(*width) += sign - 1;
+	}
+	else
+		(*str) = (char*)malloc(sizeof(char) * ((*width) + 1));
+	char_fill_eof(*str, 0, (*width) + 1, ' ');
+}
+
+void	fill_str(char **str, t_param *prm, t_sup *t, int n)
+{
+	int pr;
+
+	if (prm->width > (pr = prm->precision) && pr > t->size && !prm->head)
+		char_fill_eof(*str, prm->width - pr, prm->width + 1, '0');
+	else if (prm->width > pr && pr > t->size && prm->head)
+		char_fill_0(*str, 0, pr, '0');
+	else if ((prm->width > pr && pr == -1 &&
+			prm->c_fill == '0') || (prm->width < pr && pr > t->size))
+		char_fill_eof(*str, 0, t->width + 1, '0');
+	if ((prm->head && t->sign) || (!prm->head && t->sign && prm->width < pr))
+		(*str)[0] = (n < 0) ? '-' : '+';
+	else if (!prm->head && t->sign && prm->width >= pr && pr == 0 && !n)
+		(*str)[ft_strlen(*str) - 1] = '+';
+	else if (!prm->head && t->sign && prm->width >= pr && pr <= t->size)
+	{
+		if (prm->c_fill == '0' && pr == -1)
+			(*str)[0] = (n < 0) ? '-' : '+';
 		else
-			if (!(str = (char*)malloc(sizeof(char) * (width + 1))))
-				ft_error(1);
-		char_fill(str, 0, width + 1, ' ', 1);
-		
-		if (prm->width > prm->precision && prm->precision > size && !prm->head)
-			char_fill(str, prm->width - prm->precision, prm->width + 1, '0', 1);
-		else if (prm->width > prm->precision && prm->precision > size && prm->head)
-			char_fill(str, 0, prm->precision, '0', 0);
-		else if (prm->width > prm->precision && prm->precision == -1 && prm->c_fill == '0')
-			char_fill(str, 0, width + 1, '0', 1);
-		else if (prm->width < prm->precision && prm->precision > size)
-			char_fill(str, 0, width + 1, '0', 1);
-		nbr_str = (n < 0) ? ft_itoa_base(-n, 10) : ft_itoa_base(n, 10);
-		
-		if (prm->head && sign)
-			str[0] = (n < 0) ? '-' : '+';
-		else if (!prm->head && sign && prm->width < prm->precision)
-			str[0] = (n < 0) ? '-' : '+';
-		else if (!prm->head && sign && prm->width >= prm->precision && prm->precision == 0 && !n)
-			str[ft_strlen(str) - 1] = '+';
-		else if (!prm->head && sign && prm->width >= prm->precision && prm->precision <= size)
-		{
-			if (prm->c_fill == '0' && prm->precision == -1)
-				str[0] = (n < 0) ? '-' : '+';
-			else
-				str[width + sign - size - 2] = (n < 0) ? '-' : '+';
-		}
-		else if (!prm->head && sign && prm->width >= prm->precision && prm->precision > size)
-		{
-			str[prm->width - prm->precision - 1] = (n < 0) ? '-' : '+';
-		}
+			(*str)[t->width + t->sign - t->size - 2] = (n < 0) ? '-' : '+';
+	}
+	else if (!prm->head && t->sign && prm->width >= pr && pr > t->size)
+		(*str)[prm->width - pr - 1] = (n < 0) ? '-' : '+';
+}
 
-		i = (str[0] == '-' || str[0] == '+') ? 1 : 0;
-		if (!prm->head)
-			i = width + sign - size - 1 * sign;
-		else if (prm->precision > size && prm->head)
-			i = prm->precision - size + sign;
-		j = 0;
+void	put_str(char **str, t_param *prm, int width, int n)
+{
+	int		i;
+	int		j;
+	int		sign;
+	int		size;
+	char	*nbr_str;
 
-		while (nbr_str[j] && str[i + j])
-		{
-			if (!(!n && prm->precision == 0))
-				str[i + j] = nbr_str[j];
-			j++;
-		}
-// мы не ставим пробел из-за флага space если пробелы уже стоят из-за других причин
-		if (prm->space && n >= 0 && !prm->plus && str[0] != ' ')
-			ft_putchar(' ');
-		ft_putstr(str);
-		free(str);
+	sign = (n < 0 || prm->plus) ? 1 : 0;
+	size = get_num_len(n);
+	nbr_str = (n < 0) ? ft_itoa_base(-n, 10) : ft_itoa_base(n, 10);
+	i = ((*str)[0] == '-' || (*str)[0] == '+') ? 1 : 0;
+	if (!prm->head)
+		i = width + sign - size - 1 * sign;
+	else if (prm->precision > size && prm->head)
+		i = prm->precision - size + sign;
+	j = 0;
+	while (nbr_str[j] && (*str)[i + j])
+	{
+		if (!(!n && prm->precision == 0))
+			(*str)[i + j] = nbr_str[j];
+		j++;
+	}
+	if (prm->space && n >= 0 && !prm->plus && (*str)[0] != ' ')
+		ft_putchar(' ');
+	ft_putstr(*str);
+}
+
+void	put_str_simple(int n, t_param *prm)
+{
+	int sign;
+
+	sign = (n < 0 || prm->plus) ? 1 : 0;
+	if (!n && prm->precision == 0)
+	{
+		if (sign)
+			ft_putchar('+');
 	}
 	else
 	{
-		if (!n && prm->precision == 0)
-		{
-			if (sign)
-				ft_putchar('+');
-		}
-		else
-		{
-			if (prm->space && !sign)
-				ft_putchar(' ');
-			if (prm->plus && n >= 0)
-				ft_putchar('+');
-			ft_putstr(ft_itoa_base(n, 10));
-		}		
+		if (prm->space && !sign)
+			ft_putchar(' ');
+		if (prm->plus && n >= 0)
+			ft_putchar('+');
+		ft_putstr(ft_itoa_base(n, 10));
 	}
+}
+
+void	ft_putnbr_i(int n, t_param *prm)
+{
+	int		size;
+	int		sign;
+	int		width;
+	char	*str;
+	t_sup	tmp;
+
+	size = get_num_len(n);
+	sign = (n < 0 || prm->plus) ? 1 : 0;
+	width = (prm->width >= prm->precision) ? prm->width : prm->precision;
+	if (width > size)
+	{
+		set_str(&str, prm, &width, n);
+		tmp.size = size;
+		tmp.sign = sign;
+		tmp.width = width;
+		fill_str(&str, prm, &tmp, n);
+		put_str(&str, prm, width, n);
+		free(str);
+	}
+	else
+		put_str_simple(n, prm);
 }

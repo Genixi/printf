@@ -6,7 +6,7 @@
 /*   By: equiana <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:59:58 by equiana           #+#    #+#             */
-/*   Updated: 2019/11/28 18:08:22 by equiana          ###   ########.fr       */
+/*   Updated: 2019/11/30 17:30:29 by equiana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_param
     char			flag_3;
 	int				width;
     int				precision;
-    char			mod;
+	char			mod;
 	char			mod_2;
 	char        	type;
 	char			c_fill;
@@ -41,6 +41,13 @@ typedef struct		s_nbr
 	unsigned long	n;
 
 }					t_nbr;
+
+typedef struct		s_sup
+{
+	int				sign;
+	int				size;
+	int				width;
+}					t_sup;
 
 int					ft_printf(const char *restrict format, ...);
 int					ft_prm_parse(char *s, t_param *p);
@@ -70,7 +77,9 @@ void				ft_putnbr_ptr(unsigned long long int value, t_param *prm, int cap);
 void				ft_put_char(char c, t_param *prm);
 void				ft_put_str(char *s, t_param *prm);
 void				ft_put_str_e(char *s, t_param *prm);
-void				char_fill(char *str, int start, int end, char c, int eof); 
+void				char_fill(char *str, int start, int end, char c, int eof);
+void				char_fill_0(char *str, int start, int end, char c); 
+void				char_fill_eof(char *str, int start, int end, char c);
 void				ft_error(int n);
 void				display_str(t_param *p);
 char				*ft_itoa_base_li(long int value, int base, int cap);

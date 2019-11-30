@@ -67,16 +67,16 @@ void ft_putnbr_hex(unsigned int n, t_param *prm, int cap)
         }
         //        printf("width_-1: %zu", ft_strlen(str));
           
-        char_fill(str, 0, width + 1, ' ', 1);
+        char_fill_eof(str, 0, width + 1, ' ');
         
         if (prm->width > prm->precision && prm->precision > size && !head)
-            char_fill(str, prm->width - prm->precision, prm->width + 1, '0', 1);
+            char_fill_eof(str, prm->width - prm->precision, prm->width + 1, '0');
         else if (prm->width > prm->precision && prm->precision > size && head)
-            char_fill(str, 0, prm->precision, '0', 0);
+            char_fill_0(str, 0, prm->precision, '0');
         else if (prm->width > prm->precision && prm->precision == -1 && c_fill == '0')
-            char_fill(str, 0, width + 1, '0', 1);
+            char_fill_eof(str, 0, width + 1, '0');
         else if (prm->width < prm->precision && prm->precision > size)
-            char_fill(str, 0, width + 1, '0', 1);
+            char_fill_eof(str, 0, width + 1, '0');
         
         //        printf("str: %s\n", str);
         //        printf("width_0: %zu", ft_strlen(str));

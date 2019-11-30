@@ -24,9 +24,9 @@ void	ft_put_char(char c, t_param *prm)
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (prm->width + 1))))
 			ft_error(1);
-		char_fill(str, 0, prm->width + 1, prm->c_fill, 1);
+		char_fill_eof(str, 0, prm->width + 1, prm->c_fill);
 		if (prm->head)
-			char_fill(str, 0, prm->width + 1, ' ', 1);
+			char_fill_eof(str, 0, prm->width + 1, ' ');
 		str[prm->width] = '\0';
 		if (!prm->head)
 			str[prm->width - 1] = c;
